@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Practica1v2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="inicio">Bienvenido</string>
+    <string name="ip">Introduce tu IP o dominio</string>
+    <string name="ip2">IP o dominio</string>
+    <string name="menu_help">Ayuda</string>
+    <string name="puerto">Introduce el puerto</string>
+    <string name="puerto2">Puerto</string>
+    <string name="user">Introduce tu usuario</string>
+    <string name="user2">Usuario</string>
+    <string name="pass">Introduce tu contraseña</string>
+    <string name="pass2">Contraseña</string>
+    <string name="action_settings">Settings</string>
+    <string name="conect">Conecta</string>
+    <string name="help_uja">Universidad de Jaén</string> 
+    <string name="help_title">Ayuda de la aplicación de Práctica1v2</string>
+    <string name="help_text">Esta es una aplicación de la asignatura,
+		Servicios Móviles del Grado de Ingeniería Telemática de la Universidad de Jaén
+		realizada por Sergio Díaz Fuentes y Javier Montoro Salas.
+</string>
+<string name="help_contents">Contenido</string>
+<string name="help_content_p1">En esta aplicación se podrán realizar distintas operaciones
+    matemáticas.</string>
+    <string name="operaciones">Operaciones</string>
+    
+
+</resources>

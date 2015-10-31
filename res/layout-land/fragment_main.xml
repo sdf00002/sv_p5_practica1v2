@@ -1,0 +1,150 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:background="@color/Beige"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/fragmentinicio_frame"
+        android:layout_width="319dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/darkblue"
+        android:padding="5dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/inicio"
+            android:textColor="@color/White"
+            android:textSize="15dp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/main_textView_foot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/uja"
+        android:text="@string/help_uja"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/puerto"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="14dp"
+        android:text="@string/puerto"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dir_ip"
+        android:layout_alignBottom="@+id/dir_ip"
+        android:layout_alignLeft="@+id/port"
+        android:text="@string/ip"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/clave"
+        android:layout_alignRight="@+id/clave"
+        android:layout_alignTop="@+id/usuario"
+        android:textSize="15dp"
+        android:text="@string/user" />
+
+    <ImageButton
+        android:id="@+id/boton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ip"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:src="@drawable/ic_menu_send"
+        android:layout_marginRight="35dp" />
+
+    <EditText
+        android:id="@+id/puerto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_textView_foot"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/ip"
+        android:background="@color/blue"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColor="@color/White"
+        android:textCursorDrawable="@null" />
+
+    <EditText
+        android:id="@+id/usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/boton1"
+        android:layout_alignLeft="@+id/puerto"
+        android:layout_marginBottom="19dp"
+        android:background="@color/blue"
+        android:ems="10"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/White"
+        android:textCursorDrawable="@null" >
+        
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/usuario"
+        android:layout_alignTop="@+id/clave"
+        android:background="@color/blue"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:textColor="@color/White"
+        android:textCursorDrawable="@null" />
+
+    <EditText
+        android:id="@+id/dir_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/puerto"
+        android:layout_alignLeft="@+id/password"
+        android:layout_marginBottom="18dp"
+        android:background="@color/blue"
+        android:ems="10"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/White"
+        android:textCursorDrawable="@null" />
+
+    <TextView
+        android:id="@+id/clave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ip"
+        android:layout_alignTop="@+id/boton1"
+        android:text="@string/pass"
+        android:textSize="15dp" />
+
+</RelativeLayout>
