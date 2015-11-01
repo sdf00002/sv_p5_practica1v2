@@ -51,6 +51,11 @@ public class MainActivity extends Activity {
 			Intent newactivity_help = new Intent(this, Help.class);
 			startActivity(newactivity_help);
 			return true;
+		case R.id.action_settings:
+			// Creamos una nueva Activity
+			Intent newactivity_settings = new Intent(this, Settings.class);
+			startActivity(newactivity_settings);
+			return true;	
 		}
 
 		return false;

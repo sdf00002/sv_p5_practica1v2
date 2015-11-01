@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="SecondActivity"></activity>
         <activity android:name="Help"></activity>
+        <activity android:name="Settings"></activity>
     </application>
 
 </manifest>
