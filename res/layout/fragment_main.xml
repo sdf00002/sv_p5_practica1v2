@@ -21,7 +21,7 @@
     
  <FrameLayout
      android:id="@+id/fragmentinicio_frame"
-     android:layout_width="319dp"
+     android:layout_width="fill_parent"
      android:layout_height="wrap_content"
      android:layout_alignParentTop="true"
      android:background="@color/darkblue"
@@ -43,12 +43,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/user"
-        android:layout_marginLeft="50dp"
         android:layout_marginTop="14dp"
         android:background="@color/blue"
         android:textCursorDrawable="@null"
         android:textColor="@color/White"
         android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:singleLine="true"> 
         
@@ -124,6 +124,7 @@
          android:gravity="center"
          android:inputType="textPassword"
          android:singleLine="true"
+         android:layout_centerHorizontal="true"
          android:textColor="@color/White"
          android:textCursorDrawable="@null" />
 
@@ -150,6 +151,7 @@
          android:ems="10"
          android:gravity="center"
          android:singleLine="true"
+         android:layout_centerHorizontal="true"
          android:textColor="@color/White"
          android:textCursorDrawable="@null" />
 
@@ -166,6 +168,7 @@
          android:inputType="number"
          android:singleLine="true"
          android:textColor="@color/White"
+         android:layout_centerHorizontal="true"
          android:textCursorDrawable="@null" />
     
     </RelativeLayout>
