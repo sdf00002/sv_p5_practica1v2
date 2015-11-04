@@ -8,66 +8,150 @@
     android:background="@color/Beige"
     android:orientation="vertical" >
 
-     <LinearLayout
-         android:id="@+id/layout_linear"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentRight="true"
-         android:layout_below="@+id/fragmentinicio_frame"
-         android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/layout_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_textView_foot"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/fragmentinicio_frame"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_marginTop="10sp">
+			
+              <TextView
+                  android:id="@+id/user"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:text="@string/user"
+                  android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:ems="10"
+                android:singleLine="true"
+                android:layout_marginTop="20sp"
+                android:textColor="@color/White"
+                android:textCursorDrawable="@null" >
+
+                <requestFocus />
+            </EditText>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
+             <TextView
+                 android:id="@+id/clave"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="@string/pass" />
+
+           	<EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" >
+
+
+            </EditText>
+            
+            
+            
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content" >
+           	
+             <TextView
+                 android:id="@+id/ip"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="@string/ip" />
+
+           	<EditText
+                android:id="@+id/dir_ip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" >
+
+
+            </EditText>
+            
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+           	
+             <TextView
+                 android:id="@+id/port"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="@string/puerto" />
+
+           	<EditText
+                android:id="@+id/puerto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" >
+
+
+            </EditText>
+            
+            
+            
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/boton1"
+            android:layout_width="123dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:gravity="center"
+            android:src="@drawable/ic_menu_send" />
 
     </LinearLayout>
-    
- <FrameLayout
-     android:id="@+id/fragmentinicio_frame"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content"
-     android:layout_alignParentTop="true"
-     android:background="@color/darkblue"
-     android:padding="5dp" >
+
+    <FrameLayout
+        android:id="@+id/fragmentinicio_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/darkblue"
+        android:padding="5dp" >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/inicio"
-            android:textSize="15dp"
-            android:textColor="@color/White" />
-
+            android:textColor="@color/White"
+            android:textSize="15dp" />
     </FrameLayout>
 
-    <EditText
-        android:id="@+id/usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/user"
-        android:layout_marginTop="14dp"
-        android:background="@color/blue"
-        android:textCursorDrawable="@null"
-        android:textColor="@color/White"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:singleLine="true"> 
-        
-                 <requestFocus />
-        </EditText>
-
     <TextView
-        android:id="@+id/user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/fragmentinicio_frame"
-        android:layout_below="@+id/fragmentinicio_frame"
-        android:layout_marginTop="27dp"
-        android:gravity="center"
-        android:text="@string/user"
-        android:textSize="15dp" />
-    
-     <TextView
         android:id="@+id/main_textView_foot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,97 +162,4 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black" />
 
-     <ImageButton
-         android:id="@+id/boton1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/main_textView_foot"
-         android:layout_centerHorizontal="true"
-         android:gravity="center"
-         android:layout_marginBottom="15dp"
-         android:src="@drawable/ic_menu_send" />
-
-     <TextView
-         android:id="@+id/clave"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentRight="true"
-         android:layout_below="@+id/usuario"
-         android:layout_marginTop="14dp"
-         android:gravity="center"
-         android:text="@string/pass"
-         android:textSize="15dp" />
-
-     <TextView
-         android:id="@+id/port"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/puerto"
-         android:layout_alignParentLeft="true"
-         android:layout_alignRight="@+id/user"
-         android:layout_marginBottom="14dp"
-         android:gravity="center"
-         android:text="@string/puerto"
-         android:textSize="15dp" />
-
-     <EditText
-         android:id="@+id/password"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/usuario"
-         android:layout_alignRight="@+id/usuario"
-         android:layout_below="@+id/clave"
-         android:background="@color/blue"
-         android:ems="10"
-         android:gravity="center"
-         android:inputType="textPassword"
-         android:singleLine="true"
-         android:layout_centerHorizontal="true"
-         android:textColor="@color/White"
-         android:textCursorDrawable="@null" />
-
-     <TextView
-         android:id="@+id/ip"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/dir_ip"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentRight="true"
-         android:layout_marginBottom="20dp"
-         android:gravity="center"
-         android:text="@string/ip"
-         android:textSize="15dp" />
-
-     <EditText
-         android:id="@+id/dir_ip"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/port"
-         android:layout_alignLeft="@+id/password"
-         android:layout_marginBottom="16dp"
-         android:background="@color/blue"
-         android:ems="10"
-         android:gravity="center"
-         android:singleLine="true"
-         android:layout_centerHorizontal="true"
-         android:textColor="@color/White"
-         android:textCursorDrawable="@null" />
-
-     <EditText
-         android:id="@+id/puerto"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/boton1"
-         android:layout_alignLeft="@+id/dir_ip"
-         android:layout_marginBottom="14dp"
-         android:background="@color/blue"
-         android:ems="10"
-         android:gravity="center"
-         android:inputType="number"
-         android:singleLine="true"
-         android:textColor="@color/White"
-         android:layout_centerHorizontal="true"
-         android:textCursorDrawable="@null" />
-    
-    </RelativeLayout>
+</RelativeLayout>
