@@ -38,113 +38,149 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black" />
 
-    <TextView
-        android:id="@+id/port"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/puerto"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="14dp"
-        android:text="@string/puerto"
-        android:textSize="15dp" />
-
-    <TextView
-        android:id="@+id/ip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dir_ip"
-        android:layout_alignBottom="@+id/dir_ip"
-        android:layout_alignLeft="@+id/port"
-        android:text="@string/ip"
-        android:textSize="15dp" />
-
-    <TextView
-        android:id="@+id/user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/clave"
-        android:layout_alignRight="@+id/clave"
-        android:layout_alignTop="@+id/usuario"
-        android:textSize="15dp"
-        android:text="@string/user" />
-
-    <ImageButton
-        android:id="@+id/boton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ip"
-        android:layout_alignParentRight="true"
-        android:gravity="center"
-        android:src="@drawable/ic_menu_send"
-        android:layout_marginRight="35dp" />
-
-    <EditText
-        android:id="@+id/puerto"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/main_textView_foot"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/ip"
-        android:background="@color/blue"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:singleLine="true"
-        android:textColor="@color/White"
-        android:textCursorDrawable="@null" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/fragmentinicio_frame" >
 
-    <EditText
-        android:id="@+id/usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/boton1"
-        android:layout_alignLeft="@+id/puerto"
-        android:layout_marginBottom="19dp"
-        android:background="@color/blue"
-        android:ems="10"
-        android:gravity="center"
-        android:singleLine="true"
-        android:textColor="@color/White"
-        android:textCursorDrawable="@null" >
-        
-        <requestFocus />
-    </EditText>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+  			android:layout_marginTop="20sp"
+  			android:layout_marginBottom="10sp"
+            android:layout_weight="0.8" >
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/usuario"
-        android:layout_alignTop="@+id/clave"
-        android:background="@color/blue"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textPassword"
-        android:singleLine="true"
-        android:textColor="@color/White"
-        android:textCursorDrawable="@null" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/dir_ip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/puerto"
-        android:layout_alignLeft="@+id/password"
-        android:layout_marginBottom="18dp"
-        android:background="@color/blue"
-        android:ems="10"
-        android:gravity="center"
-        android:singleLine="true"
-        android:textColor="@color/White"
-        android:textCursorDrawable="@null" />
+                <TextView
+                    android:id="@+id/user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:text="@string/user"
+                    android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/clave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ip"
-        android:layout_alignTop="@+id/boton1"
-        android:text="@string/pass"
-        android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/clave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10sp"
+                    android:layout_weight="0.25"
+                    android:text="@string/pass"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/ip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:text="@string/ip"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/port"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:text="@string/puerto"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10sp"
+  			android:layout_marginBottom="10sp"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/usuario"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:background="@color/blue"
+	                android:gravity="center"
+	                android:ems="10"
+	                android:layout_weight="0.25"
+	                android:singleLine="true"
+	                android:layout_marginTop="10sp"
+	                android:textColor="@color/White"
+	                android:textCursorDrawable="@null" >
+
+                    <requestFocus />
+                </EditText>
+
+                <EditText
+                    android:id="@+id/password"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:background="@color/blue"
+	                android:ems="10"
+	                android:layout_weight="0.25"
+	                android:gravity="center"
+	                android:layout_marginTop="15sp"
+	                android:inputType="textPassword"
+	                android:singleLine="true"
+	                android:textColor="@color/White"
+	                android:textCursorDrawable="@null" />
+
+                <EditText
+                    android:id="@+id/dir_ip"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:background="@color/blue"
+	                android:gravity="center"
+	                android:layout_marginTop="15sp"
+	                android:ems="10"
+	                android:layout_weight="0.25"
+	                android:singleLine="true"
+	                android:textColor="@color/White"
+	                android:textCursorDrawable="@null" />
+
+                <EditText
+                    android:id="@+id/puerto"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:background="@color/blue"
+	                android:gravity="center"
+	                android:inputType="number"
+	                android:layout_marginTop="15sp"
+	                android:layout_marginBottom="10sp"
+	                android:ems="10"
+	                android:layout_weight="0.25"
+	                android:singleLine="true"
+	                android:textColor="@color/White"
+	                android:textCursorDrawable="@null" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/boton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.2"
+            android:src="@drawable/ic_menu_send" />
+
+    </LinearLayout>
 
 </RelativeLayout>
