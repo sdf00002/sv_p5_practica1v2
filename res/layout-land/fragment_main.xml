@@ -49,7 +49,6 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-  			android:layout_marginTop="20sp"
             android:layout_weight="0.8" >
 
             <LinearLayout
@@ -57,41 +56,62 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
 
-                <TextView
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                    
+                    <TextView
                     android:id="@+id/user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="0.25"
                     android:text="@string/user"
                     android:textSize="15sp" />
+                </FrameLayout>
 
-                <TextView
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                    
+                     <TextView
                     android:id="@+id/clave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="0.25"
                     android:text="@string/pass"
                     android:textSize="15sp" />
+                    
+                </FrameLayout>
 
-                <TextView
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                     
+                    <TextView
                     android:id="@+id/ip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="0.25"
                     android:text="@string/ip"
                     android:textSize="15sp" />
+                </FrameLayout>
 
-                <TextView
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                    
+                      <TextView
                     android:id="@+id/port"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="0.25"
                     android:text="@string/puerto"
                     android:textSize="15sp" />
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -100,7 +120,6 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-  			android:layout_marginBottom="10sp"
             android:layout_weight="1" >
 
             <LinearLayout
@@ -108,62 +127,82 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
 
-                <EditText
-                    android:id="@+id/usuario"
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:background="@color/blue"
-	                android:gravity="center"
-	                android:ems="10"
-	                android:layout_weight="0.25"
-	                android:singleLine="true"
-	                android:layout_marginTop="10sp"
-	                android:textColor="@color/White"
-	                android:textCursorDrawable="@null" >
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                    
+                    <EditText
+                        android:id="@+id/usuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/blue"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:textColor="@color/White"
+                        android:textCursorDrawable="@null" >
 
                     <requestFocus />
                 </EditText>
+                </FrameLayout>
 
-                <EditText
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                    
+                    <EditText
                     android:id="@+id/password"
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
+	                android:layout_gravity="center_vertical"
 	                android:background="@color/blue"
 	                android:ems="10"
-	                android:layout_weight="0.25"
 	                android:gravity="center"
-	                android:layout_marginTop="15sp"
 	                android:inputType="textPassword"
 	                android:singleLine="true"
 	                android:textColor="@color/White"
 	                android:textCursorDrawable="@null" />
+                </FrameLayout>
 
-                <EditText
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                    
+                    <EditText
                     android:id="@+id/dir_ip"
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
+	                android:layout_gravity="center_vertical"
 	                android:background="@color/blue"
 	                android:gravity="center"
-	                android:layout_marginTop="15sp"
 	                android:ems="10"
-	                android:layout_weight="0.25"
 	                android:singleLine="true"
 	                android:textColor="@color/White"
 	                android:textCursorDrawable="@null" />
+                </FrameLayout>
 
-                <EditText
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+                    
+                    <EditText
                     android:id="@+id/puerto"
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
+	                android:layout_gravity="center_vertical"
 	                android:background="@color/blue"
 	                android:gravity="center"
 	                android:inputType="number"
-	                android:layout_marginTop="15sp"
 	                android:ems="10"
-	                android:layout_weight="0.25"
 	                android:singleLine="true"
 	                android:textColor="@color/White"
 	                android:textCursorDrawable="@null" />
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -172,9 +211,8 @@
         <ImageButton
             android:id="@+id/boton1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.2"
             android:src="@drawable/ic_menu_send" />
 
     </LinearLayout>

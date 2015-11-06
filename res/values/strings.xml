@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Práctica1v2</string>
+    <string name="app_name">SMCálculo</string>
     <string name="hello_world">Hello world!</string>
     <string name="inicio">Bienvenido</string>
     <string name="ip">Introduce tu IP o dominio</string>

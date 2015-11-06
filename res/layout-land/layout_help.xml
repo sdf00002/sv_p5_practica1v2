@@ -9,8 +9,88 @@
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/main_textView_foot"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                
+                <TextView
+                    android:id="@+id/help_textView_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/linearLayout1"
+                    android:layout_marginTop="23dp"
+                    android:layout_toLeftOf="@+id/linearLayout1"
+                    android:gravity="center"
+                    android:text="@string/help_title"
+                    android:textColor="@color/Chocolate"
+                    android:textSize="20sp" />
+                
+                <TextView
+        android:id="@+id/help_textView_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/help_textView_title"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/help_text"
+        android:textColor="@color/darkblue"
+        android:textSize="15sp" />
+                
+        
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                 
+                 <TextView
+                     android:id="@+id/panel_textView_title"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_above="@+id/panel_textView_text"
+                     android:layout_centerHorizontal="true"
+                     android:layout_marginBottom="15dp"
+                     android:gravity="center"
+                     android:text="@string/help_contents"
+                     android:textColor="@color/Chocolate"
+                     android:textSize="20sp" />
+                 
+                 <TextView
+                     android:id="@+id/panel_textView_text"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_above="@+id/main_textView_foot"
+                     android:layout_centerHorizontal="true"
+                     android:layout_marginBottom="10dp"
+                     android:gravity="center"
+                     android:text="@string/help_content_p1"
+                     android:textColor="@color/darkblue"
+                     android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
 
     </LinearLayout>
     
@@ -23,54 +103,5 @@
         android:background="@drawable/uja"
         android:text="@string/help_uja"
         android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/panel_textView_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/main_textView_foot"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:text="@string/help_content_p1"
-        android:textColor="@color/darkblue"
-        android:textSize="15dp" />
-
-    <TextView
-        android:id="@+id/help_textView_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="23dp"
-        android:layout_toLeftOf="@+id/linearLayout1"
-        android:gravity="center"
-        android:text="@string/help_title"
-        android:textColor="@color/Chocolate"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/panel_textView_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/panel_textView_text"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginBottom="15dp"
-        android:text="@string/help_contents"
-        android:textColor="@color/Chocolate"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/help_textView_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/help_textView_title"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="@string/help_text"
-        android:textColor="@color/darkblue"
-        android:textSize="15dp" />
 
 </RelativeLayout>
