@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 		    final View port=rootView.findViewById(R.id.puerto);
 
 			((ImageButton) lanzar).setOnClickListener(new View.OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
@@ -100,7 +100,14 @@ public class MainActivity extends Activity {
 				        toast1.show();
 				        
 						
-					} else { 
+					} else if (((EditText)usuario).getText().toString().length()<6||((EditText)usuario).getText().toString().length()>12){ 
+						Toast toast1 =
+					            Toast.makeText(getActivity(),
+					            		"El usuario debe tener entre 6 y 12 caracteres", Toast.LENGTH_SHORT);
+						toast1.setGravity(Gravity.CENTER,0,0);
+					        toast1.show();
+
+							}else{
 					Intent intent= new Intent();
 					intent.setClass(getActivity(), SecondActivity.class);
 					//Pasamos los valores de los elementos a la siguiente actividad
@@ -143,5 +150,6 @@ public class MainActivity extends Activity {
 	//para las demas cosas, se reenvia el evento al listener habitual
 	  return super.onKeyDown(keyCode, event);
 	} 
+	
 
 }

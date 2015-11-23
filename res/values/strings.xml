@@ -11,6 +11,7 @@
     <string name="puerto2">Puerto</string>
     <string name="user">Introduce tu usuario</string>
     <string name="user2">Usuario</string>
+    <string name="operacion">Introduce un número</string>
     <string name="pass">Introduce tu contraseña</string>
     <string name="pass2">Contraseña</string>
     <string name="action_settings">Configuración</string>
@@ -25,6 +26,8 @@
 <string name="help_content_p1">En esta aplicación se podrán realizar distintas operaciones
     matemáticas.</string>
     <string name="operaciones">Operaciones</string>
+    <string name="seno">Seno</string>
+    <string name="coseno">Coseno</string>
     
 
 </resources>

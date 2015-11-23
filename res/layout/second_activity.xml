@@ -40,79 +40,89 @@
         android:textColor="@android:color/black" />
     
     <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_above="@+id/main_textView_foot"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentRight="true"
-             android:layout_below="@+id/fragmentinicio_frame"
-             android:orientation="vertical" >
-        
-              <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            >
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="20sp"
-            android:textColor="@color/Chocolate"
-            />
-        </FrameLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_textView_foot"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/fragmentinicio_frame"
+        android:orientation="vertical" >
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            >
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="20sp"
-            android:textColor="@color/Chocolate"
-            />
+            android:layout_weight="0.2" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="@string/operacion"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/blue"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:textColor="@color/White"
+                android:textCursorDrawable="@null" >
+
+                <requestFocus />
+            </EditText>
+
         </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.20" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_gravity="center_vertical"
+                android:text="@string/seno" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:text="@string/coseno" />
+
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            >
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="20sp"
-            android:textColor="@color/Chocolate"
-             />
+            android:layout_gravity="center"
+            android:layout_weight="0.6" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@color/Chocolate"
+                android:gravity="center"
+                android:textColor="@color/White"
+                android:textSize="15sp" />
+
         </FrameLayout>
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            >
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="20sp"
-            android:textColor="@color/Chocolate"
-            />
-        </FrameLayout>
-
-         </LinearLayout>
-        
+    </LinearLayout>
     
  </RelativeLayout>
