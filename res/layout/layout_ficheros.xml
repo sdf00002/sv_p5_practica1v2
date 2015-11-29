@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ficheros_root_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/ficheros_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <TableLayout
+            android:id="@+id/ficheros_table_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/ficheros_tableRow_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/ficheros_textView_fichero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Fichero" />
+
+                <EditText
+                    android:id="@+id/ficheros_editText_filename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10" >
+
+                    <requestFocus />
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/ficheros_tableRow_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/ficheros_textView_texto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Etiqueta" />
+"
+
+                <EditText
+                    android:id="@+id/ficheros_editText_texto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/ficheros_tableRow_03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/ficheros_textView_valor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Valor" />
+
+                <EditText
+                    android:id="@+id/ficheros_editText_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/ficheros_textview_almacenamiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_dark"
+            android:padding="2dp"
+            android:text="@string/Almacenamiento"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/primary_text_dark" />
+
+        <TableLayout
+            android:id="@+id/TableLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0" >
+
+            <TableRow
+                android:id="@+id/ficheros_table2_row1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/ficheros_textview_interno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Interno" />
+
+                <Button
+                    android:id="@+id/ficheros_button_save"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_weight="0.3"
+                    android:onClick="onSave"
+                    android:text="@string/grabar" />
+
+                <Button
+                    android:id="@+id/framentmenu_launchbutton"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_weight="0.3"
+                    android:onClick="onLoad"
+                    android:text="@string/cargar" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/ficheros_table2_row3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/ficheros_textview_bbdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/BaseDatos" />
+
+                <Button
+                    android:id="@+id/button_dbSave"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_weight="0.3"
+                    android:onClick="onSaveDatabase"
+                    android:text="@string/grabar" />
+
+                <Button
+                    android:id="@+id/button_dbLoad"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_weight="0.3"
+                    android:onClick="onLoadDatabase"
+                    android:text="@string/cargar" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.02"/>
+    </LinearLayout>
+
+</ScrollView>

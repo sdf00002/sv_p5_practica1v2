@@ -28,6 +28,15 @@
     <string name="operaciones">Operaciones</string>
     <string name="seno">Seno</string>
     <string name="coseno">Coseno</string>
+    <string name="Fichero">Fichero</string>
+    <string name="Etiqueta">Etiqueta</string>
+    <string name="Valor">Valor</string>
+    <string name="Almacenamiento">Almacenamiento</string>
+    <string name="Interno">Interno</string>
+    <string name="BaseDatos">Base de Datos</string>
+    <string name="fichero_result">result</string>
+    <string name="grabar">Grabar</string>
+    <string name="cargar">Leer</string>
     
 
 </resources>

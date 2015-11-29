@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
 
 							}else{
 					Intent intent= new Intent();
-					intent.setClass(getActivity(), SecondActivity.class);
+					intent.setClass(getActivity(), Ficheros.class);
 					//Pasamos los valores de los elementos a la siguiente actividad
 					intent.putExtra("user", ((EditText)usuario).getText().toString());
 					intent.putExtra("pass", ((EditText)password).getText().toString());

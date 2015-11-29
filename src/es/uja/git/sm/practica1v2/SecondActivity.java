@@ -17,6 +17,23 @@ import android.widget.TextView;
 
 public class SecondActivity extends Activity {
 	
+	//PDU formada por: Version+secuencia+tipo+comando+payload
+	
+	//Comandos utilizados en el protocolo
+	public static final String CRLF="\r\n";
+	public static final String OK="+OK";
+	public static final String ERR="-ERR";
+	public static final String QUIT="QUIT";
+	//Tipos de mensajes
+	public static final byte MSG_LOGIN=0x01; 
+	public static final byte MSG_OPERACION=0x02;
+	public static final byte MSG_FIN=0X04;
+	
+	protected int secuencia=0;
+	protected static final byte version=1,tipo=0;
+	private boolean salida=false;
+	private String mensaje = "",cmd="";
+	private byte v,type;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -32,6 +49,8 @@ public class SecondActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second_activity);
+		TextView panel = (TextView)findViewById(R.id.textView1);
+		panel.setText(conectaSocket(ip, puerto));
 		/**
 		//Asociamos las variables tipo TextView a los campos de la interfaz
 		TextView user = (TextView)findViewById(R.id.textView1);
@@ -47,8 +66,8 @@ public class SecondActivity extends Activity {
 		*/
 	}
 	
-	public String conectaSocket(String host,int puerto) {
-
+	public String conectaSocket(String host,String port) {
+		int puerto=Integer.parseInt(port);
 		if (host!= null && puerto!=0) {
 			String contentAsString = "";
 			Socket s = new Socket();
@@ -57,15 +76,13 @@ public class SecondActivity extends Activity {
 
 			try {
 				String line = null;
-				int port=puerto;
-				s = new Socket(host, port);
+				s = new Socket(host, puerto);
 
 				is = s.getInputStream();
 				dos = new DataOutputStream(s.getOutputStream());
 
-				dos.writeUTF("GET / HTTP/1.1\r\n" + "HOST=www10.ujaen.es\r\n" + "Connection: close\r\n"
-						+ "Accept: text/*\r\n" + "User-Agent: UJAClient (Windows NT 10.0; WOW64)\r\n"
-						+ "Accept-Language: es-ES,es;q=0.8,en;q=0.6");
+				
+				dos.writeUTF(OK);
 				dos.flush();
 
 				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -73,9 +90,7 @@ public class SecondActivity extends Activity {
 				while ((line = reader.readLine()) != null) {
 					line = line + "\r\n";
 
-					if (line.contains("Content-Length")) {
-						String datalength = line.substring(line.indexOf("Content-Length"));
-					}
+					
 					contentAsString = contentAsString + line;
 				}
 				dos.close();
