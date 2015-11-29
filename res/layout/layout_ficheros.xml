@@ -28,13 +28,14 @@
                     android:id="@+id/ficheros_textView_fichero"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Fichero" />
+                    android:text="@string/user2" />
 
                 <EditText
-                    android:id="@+id/ficheros_editText_filename"
+                    android:id="@+id/ficheros_usuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10" >
+                    android:ems="10"
+                    android:inputType="text" >
 
                     <requestFocus />
                 </EditText>
@@ -49,14 +50,16 @@
                     android:id="@+id/ficheros_textView_texto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Etiqueta" />
+                    android:text="@string/operaciones" />
 "
 
                 <EditText
-                    android:id="@+id/ficheros_editText_texto"
+                    android:id="@+id/ficheros_operacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10" />
+                    android:ems="10"
+                    android:inputType="text" />
+
             </TableRow>
 
             <TableRow
@@ -71,11 +74,11 @@
                     android:text="@string/Valor" />
 
                 <EditText
-                    android:id="@+id/ficheros_editText_value"
+                    android:id="@+id/ficheros_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
             </TableRow>
         </TableLayout>
 
@@ -96,32 +99,6 @@
             android:stretchColumns="0" >
 
             <TableRow
-                android:id="@+id/ficheros_table2_row1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/ficheros_textview_interno"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Interno" />
-
-                <Button
-                    android:id="@+id/ficheros_button_save"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_weight="0.3"
-                    android:onClick="onSave"
-                    android:text="@string/grabar" />
-
-                <Button
-                    android:id="@+id/framentmenu_launchbutton"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_weight="0.3"
-                    android:onClick="onLoad"
-                    android:text="@string/cargar" />
-            </TableRow>
-
-            <TableRow
                 android:id="@+id/ficheros_table2_row3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
@@ -140,8 +117,8 @@
                     android:text="@string/grabar" />
 
                 <Button
-                    android:id="@+id/button_dbLoad"
-                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/button_dbLoad"  
+                    style="?android:attr/buttonStyleSmall"                
                     android:layout_weight="0.3"
                     android:onClick="onLoadDatabase"
                     android:text="@string/cargar" />
