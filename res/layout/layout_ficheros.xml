@@ -113,14 +113,14 @@
                     android:id="@+id/button_dbSave"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_weight="0.3"
-                    android:onClick="onSaveDatabase"
+                    android:onClick="onSave"
                     android:text="@string/grabar" />
 
                 <Button
                     android:id="@+id/button_dbLoad"  
                     style="?android:attr/buttonStyleSmall"                
                     android:layout_weight="0.3"
-                    android:onClick="onLoadDatabase"
+                    android:onClick="onLoad"
                     android:text="@string/cargar" />
             </TableRow>
         </TableLayout>

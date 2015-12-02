@@ -31,12 +31,17 @@
     <string name="Fichero">Fichero</string>
     <string name="Etiqueta">Etiqueta</string>
     <string name="Valor">Valor</string>
+    <string name="historico">Histórico</string>
+    <string name="salir">Salir</string>
     <string name="Almacenamiento">Almacenamiento</string>
     <string name="Interno">Interno</string>
     <string name="BaseDatos">Base de Datos</string>
     <string name="fichero_result">result</string>
     <string name="grabar">Grabar</string>
     <string name="cargar">Leer</string>
+    <string name="toast_saved">Datos guardados</string>
+    <string name="toast_error">Error</string>
+    <string name="toast_loaded">Datos cargados</string>
     
 
 </resources>
