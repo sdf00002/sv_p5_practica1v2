@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
 import java.util.Calendar;
@@ -21,9 +22,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import es.uja.git.sv.examples.Network;
-import es.uja.git.sv.examples.R;
-import es.uja.git.sv.examples.Network.SocketConnection;
 
 public class SecondActivity extends Activity {
 	
@@ -60,9 +58,16 @@ public class SecondActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second_activity);
 		TextView panel = (TextView)findViewById(R.id.textView1);
+		URL url = null;
+		try {
+			url = new URL("http://"+ip+":"+puerto);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//panel.setText(conectaSocket(ip, puerto));
-		//SocketConnection task = new SocketConnection();
-		//task.execute(url);
+		SocketConnection task = new SocketConnection();
+		task.execute(url);
 		/**
 		//Asociamos las variables tipo TextView a los campos de la interfaz
 		TextView user = (TextView)findViewById(R.id.textView1);
@@ -78,9 +83,9 @@ public class SecondActivity extends Activity {
 		*/
 	}
 	
-	public String conectaSocket(String host,String port) {
-		int puerto=Integer.parseInt(port);
-		if (host!= null && puerto!=0) {
+	public String conectaSocket(URL url) {
+		
+		if (url != null) {
 			String contentAsString = "";
 			Socket s = new Socket();
 			InputStream is;
@@ -88,7 +93,8 @@ public class SecondActivity extends Activity {
 
 			try {
 				String line = null;
-				s = new Socket(host, puerto);
+				int port = url.getPort();
+				s = new Socket(url.getHost(), port);
 
 				is = s.getInputStream();
 				dos = new DataOutputStream(s.getOutputStream());
@@ -120,8 +126,8 @@ public class SecondActivity extends Activity {
 		return "Conexión fallida";
 
 	}
-	
-	private class SocketConnection extends AsyncTask<URL, String, String> {
+	//
+	private class SocketConnection extends AsyncTask<URL,String, String> {
 		ProgressDialog pbar = null;
 
 		@Override
@@ -136,7 +142,7 @@ public class SecondActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 
-			pbar = new ProgressDialog(Network.this);
+			pbar = new ProgressDialog(SecondActivity.this);
 			pbar.setIndeterminate(true);
 			pbar.setMessage(getBaseContext().getString(R.string.socket_downloading));
 
