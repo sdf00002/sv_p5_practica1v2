@@ -63,7 +63,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText1"
+                android:id="@+id/valor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class SecondActivity extends Activity {
 	
 	//PDU formada por: Version+secuencia+tipo+comando+payload
@@ -42,12 +43,14 @@ public class SecondActivity extends Activity {
 	private boolean salida=false;
 	private String mensaje = "",cmd="";
 	private byte v,type;
+	private String usuario="";
+	//private TextView panel=null;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		//Cogemos los datos enviamos por el Fragment y los asignamos a variables tipo String
 		Bundle bundle= getIntent().getExtras();
-		String usuario = null,password=null,ip=null,puerto=null;
+		String password=null,ip=null,puerto=null;
 		if(bundle!=null){
 		usuario=getIntent().getStringExtra("user");
 		password=getIntent().getStringExtra("pass");
@@ -57,17 +60,12 @@ public class SecondActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second_activity);
-		TextView panel = (TextView)findViewById(R.id.textView1);
-		URL url = null;
-		try {
-			url = new URL("http://"+ip+":"+puerto);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//TextView panel = (TextView)findViewById(R.id.textView1);
+		
+		String aux=ip+":"+puerto;
 		//panel.setText(conectaSocket(ip, puerto));
-		SocketConnection task = new SocketConnection();
-		task.execute(url);
+		//SocketConnection task = new SocketConnection();
+		//task.execute(aux);
 		/**
 		//Asociamos las variables tipo TextView a los campos de la interfaz
 		TextView user = (TextView)findViewById(R.id.textView1);
@@ -83,9 +81,9 @@ public class SecondActivity extends Activity {
 		*/
 	}
 	
-	public String conectaSocket(URL url) {
+	public String conectaSocket(String ip, String puerto) {
 		
-		if (url != null) {
+		if (ip != null) {
 			String contentAsString = "";
 			Socket s = new Socket();
 			InputStream is;
@@ -93,8 +91,8 @@ public class SecondActivity extends Activity {
 
 			try {
 				String line = null;
-				int port = url.getPort();
-				s = new Socket(url.getHost(), port);
+				int port = Integer.parseInt(puerto);
+				s = new Socket(ip, port);
 
 				is = s.getInputStream();
 				dos = new DataOutputStream(s.getOutputStream());
@@ -127,15 +125,18 @@ public class SecondActivity extends Activity {
 
 	}
 	//
-	private class SocketConnection extends AsyncTask<URL,String, String> {
+	private class SocketConnection extends AsyncTask<String,String, String> {
 		ProgressDialog pbar = null;
 
 		@Override
-		protected String doInBackground(URL... urls) {
+		protected String doInBackground(String... urls) {
 
-			// params comes from the execute() call: params[0] is the url.
+			// params comes from the execute() call: params[0] is the ip.
+			//params[1] is the port
+			String aux=urls[0];
+			String [] params=aux.split(":");
 
-			return conectaSocket(urls[0]);
+			return conectaSocket(params[0],params[1]);
 
 		}
 
@@ -144,7 +145,7 @@ public class SecondActivity extends Activity {
 
 			pbar = new ProgressDialog(SecondActivity.this);
 			pbar.setIndeterminate(true);
-			pbar.setMessage(getBaseContext().getString(R.string.socket_downloading));
+			pbar.setMessage(getBaseContext().getString(R.string.conectando));
 
 			pbar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pbar.setCancelable(false);
@@ -162,7 +163,7 @@ public class SecondActivity extends Activity {
 
 		// onPostExecute displays the results of the AsyncTask.
 		protected void onPostExecute(final String result) {
-			web.setText(result);
+			//panel.setText(result);
 			if (pbar != null)
 				pbar.dismiss();
 
@@ -185,34 +186,31 @@ public class SecondActivity extends Activity {
 	}
 	
 	public void onSave(View v) {
-		int value;
+		double value;
 		
-		EditText edit_u = (EditText) findViewById(R.id.ficheros_usuario);
-		EditText edit_o = (EditText) findViewById(R.id.ficheros_operacion);
-		EditText edit_v = (EditText) findViewById(R.id.ficheros_value);
-
-		String usuario = edit_u.getEditableText().toString();
-		String operacion = edit_o.getEditableText().toString();
+		EditText edit_v = (EditText) findViewById(R.id.valor);
 		String valor = edit_v.getEditableText().toString();
-		
 		String filename = usuario;
-
+		String operacion="sin", fec=getFecha();
+		
 		if (valor != null)
 			try {
-				value = Integer.valueOf(valor);
+				value = Double.valueOf(valor);
 			} catch (NumberFormatException es) {
 				value = 0;
 			}
 		else
 			value = 0;
-
+		double res=Math.sin(value);
          
 		try {
 			FileOutputStream os = openFileOutput(filename, MODE_PRIVATE | MODE_APPEND);
 			/* Escritura sin serialización*/
 			DataOutputStream dos = new DataOutputStream(os);
 			dos.writeUTF(operacion);
-			dos.writeInt(value);
+			dos.writeDouble(value);
+			dos.writeDouble(res);
+			dos.writeUTF(fec);
 			dos.flush();
 			dos.close();
 
@@ -242,14 +240,10 @@ public class SecondActivity extends Activity {
 	public void onLoad(View v) {
 
 		String texto = "";
-
+		TextView panel = (TextView)findViewById(R.id.textView1);
 		try {
-
-			EditText edit_u = (EditText) findViewById(R.id.ficheros_usuario);
 			
-			TextView resultado = (TextView) findViewById(R.id.textView1);
-			
-			String filename = edit_u.getEditableText().toString();
+			String filename = usuario;
 
 			FileInputStream is = openFileInput(filename);
 			
@@ -257,16 +251,17 @@ public class SecondActivity extends Activity {
 			DataInputStream dos = new DataInputStream(is);
 			
 			int n = dos.available();
-			texto = "Leidos (" + n + " bytes)\r\n";
+			//texto = "Leidos (" + n + " bytes)\r\n";
 			while (dos.available() > 0) {
-				texto = texto + " clave: " + dos.readUTF() + " valor:"
-						+ dos.readInt() + "\r\n";
+				texto = texto + " Operacion: " + dos.readUTF() + " valor:"
+						+ dos.readDouble() + " resultado:"+dos.readDouble()+
+						" fecha:"+dos.readUTF()+"\r\n";
 			}
 			dos.close();	
 
 					
 			is.close();
-			resultado.setText(texto);
+			panel.setText(texto);
 
 			
 

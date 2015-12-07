@@ -42,6 +42,7 @@
     <string name="toast_saved">Datos guardados</string>
     <string name="toast_error">Error</string>
     <string name="toast_loaded">Datos cargados</string>
+    <string name="conectando">Conectando</string>
     
 
 </resources>
