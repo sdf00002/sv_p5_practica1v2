@@ -43,6 +43,7 @@
     <string name="toast_error">Error</string>
     <string name="toast_loaded">Datos cargados</string>
     <string name="conectando">Conectando</string>
-    
+    <string name="nouser">Usuario no existente</string>
+    <string name="nopass">Password incorrecta</string>
 
 </resources>

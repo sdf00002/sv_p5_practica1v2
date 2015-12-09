@@ -38,19 +38,21 @@ public class SecondActivity extends Activity {
 	public static final byte MSG_OPERACION=0x02;
 	public static final byte MSG_FIN=0X04;
 	
+	private String aux=null;
 	protected int secuencia=0;
 	protected static final byte version=1,tipo=0;
 	private boolean salida=false;
 	private String mensaje = "",cmd="";
 	private byte v,type;
-	private String usuario="";
-	//private TextView panel=null;
-
+	private String usuario="",password="";
+	private TextView panel=null;
+	private String modifiedSentence = "";
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		//Cogemos los datos enviamos por el Fragment y los asignamos a variables tipo String
 		Bundle bundle= getIntent().getExtras();
-		String password=null,ip=null,puerto=null;
+		String ip=null,puerto=null;
 		if(bundle!=null){
 		usuario=getIntent().getStringExtra("user");
 		password=getIntent().getStringExtra("pass");
@@ -60,10 +62,8 @@ public class SecondActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second_activity);
-		//TextView panel = (TextView)findViewById(R.id.textView1);
 		
-		String aux=ip+":"+puerto;
-		//panel.setText(conectaSocket(ip, puerto));
+		aux=ip+":"+puerto;
 		//SocketConnection task = new SocketConnection();
 		//task.execute(aux);
 		/**
@@ -81,38 +81,43 @@ public class SecondActivity extends Activity {
 		*/
 	}
 	
-	public String conectaSocket(String ip, String puerto) {
+	public String conectaSocket(String ip, String puerto, String ope) {
 		
+		int estado=0;
+		int port = Integer.parseInt(puerto);
 		if (ip != null) {
-			String contentAsString = "";
-			Socket s = new Socket();
-			InputStream is;
-			DataOutputStream dos;
 
 			try {
-				String line = null;
-				int port = Integer.parseInt(puerto);
-				s = new Socket(ip, port);
-
-				is = s.getInputStream();
-				dos = new DataOutputStream(s.getOutputStream());
-
 				
-				dos.writeUTF(OK);
-				dos.flush();
+				
+				Socket s = new Socket(ip, port);
 
-				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				DataOutputStream outToServer = new DataOutputStream(s.getOutputStream());
 
-				while ((line = reader.readLine()) != null) {
-					line = line + "\r\n";
+				DataInputStream dis = new DataInputStream(s.getInputStream());
 
+				EditText edit_v = (EditText) findViewById(R.id.valor);
+				String valor = edit_v.getEditableText().toString();
+				
+				while (estado==0) {
 					
-					contentAsString = contentAsString + line;
+					
+
+					outToServer.write(version);
+					outToServer.writeInt(secuencia);
+					outToServer.write(MSG_LOGIN);
+					outToServer.writeUTF(ope);
+					outToServer.writeUTF(usuario + "_" + password+"_"+valor);
+					outToServer.flush();
+					
+					modifiedSentence=dis.readUTF();																			
+					
+					estado++;
 				}
-				dos.close();
-				is.close();
+				dis.close();
+				outToServer.close();
 				s.close();
-				return contentAsString;
+				return modifiedSentence;
 			} catch (IOException e) {
 				return e.getMessage();
 
@@ -136,7 +141,7 @@ public class SecondActivity extends Activity {
 			String aux=urls[0];
 			String [] params=aux.split(":");
 
-			return conectaSocket(params[0],params[1]);
+			return conectaSocket(params[0],params[1],params[2]);
 
 		}
 
@@ -162,8 +167,31 @@ public class SecondActivity extends Activity {
 		}
 
 		// onPostExecute displays the results of the AsyncTask.
-		protected void onPostExecute(final String result) {
-			//panel.setText(result);
+		protected void onPostExecute(String result) {
+			TextView panel = (TextView)findViewById(R.id.textView1);
+			
+			if(result.substring(3,6).equals(OK)){
+				if(panel.getText().equals(""))
+				panel.setText(result.substring(6, result.length()));
+				else{
+					panel.setText("");
+					panel.setText(result.substring(6, result.length()));
+				}
+			}
+			else {
+				if(result.substring(7,13).equals("usuario"))
+					Toast.makeText(SecondActivity.this,
+							getResources().getString(R.string.nouser),
+							Toast.LENGTH_SHORT).show();
+					else{
+						Toast.makeText(SecondActivity.this,
+								getResources().getString(R.string.nopass),
+								Toast.LENGTH_SHORT).show();
+					}
+				
+			}
+				
+			
 			if (pbar != null)
 				pbar.dismiss();
 
@@ -276,6 +304,21 @@ public class SecondActivity extends Activity {
 
 		}
 
+	}
+	
+	
+	public void onSin(View v){
+		SocketConnection task = new SocketConnection();
+		String aux2=aux+":sin";
+		task.execute(aux2);
+		
+	}
+	
+	public void onCos(View v){
+		SocketConnection task = new SocketConnection();
+		String aux2=aux+":cos";
+		task.execute(aux2);
+		
 	}
 	
 

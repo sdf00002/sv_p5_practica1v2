@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:onClick="onSave"
+                android:onClick="onSin"
                 android:layout_gravity="center_vertical"
                 android:text="@string/seno" />
 
@@ -100,6 +100,7 @@
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCos"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.5"
                 android:text="@string/coseno" />
