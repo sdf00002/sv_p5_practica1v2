@@ -45,7 +45,6 @@ public class SecondActivity extends Activity {
 	private String mensaje = "",cmd="";
 	private byte v,type;
 	private String usuario="",password="";
-	private TextView panel=null;
 	private String modifiedSentence = "";
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -171,15 +170,32 @@ public class SecondActivity extends Activity {
 			TextView panel = (TextView)findViewById(R.id.textView1);
 			
 			if(result.substring(3,6).equals(OK)){
-				if(panel.getText().equals(""))
-				panel.setText(result.substring(6, result.length()));
+				int tam=result.length();
+				if(panel.getText().equals("")){
+					if(tam>15){
+				panel.setText(result.substring(9, 15));
+				onSave(result.substring(6,9),result.substring(9, 15));
+					}
+					else{
+						panel.setText(result.substring(9, result.length()));
+						onSave(result.substring(6,9),result.substring(9, result.length()));
+					}
+				}
 				else{
 					panel.setText("");
-					panel.setText(result.substring(6, result.length()));
+					
+					if(tam>15){
+						panel.setText(result.substring(9, 15));
+						onSave(result.substring(6,9),result.substring(9, 15));
+							}
+							else{
+								panel.setText(result.substring(9, result.length()));
+								onSave(result.substring(6,9),result.substring(9, result.length()));
+							}
 				}
 			}
 			else {
-				if(result.substring(7,13).equals("usuario"))
+				if(result.substring(7,14).equals("usuario"))
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nouser),
 							Toast.LENGTH_SHORT).show();
@@ -213,13 +229,13 @@ public class SecondActivity extends Activity {
 		
 	}
 	
-	public void onSave(View v) {
+	public void onSave(String ope, String res) {
 		double value;
 		
 		EditText edit_v = (EditText) findViewById(R.id.valor);
 		String valor = edit_v.getEditableText().toString();
 		String filename = usuario;
-		String operacion="sin", fec=getFecha();
+		String operacion=ope, fec=getFecha();
 		
 		if (valor != null)
 			try {
@@ -229,7 +245,6 @@ public class SecondActivity extends Activity {
 			}
 		else
 			value = 0;
-		double res=Math.sin(value);
          
 		try {
 			FileOutputStream os = openFileOutput(filename, MODE_PRIVATE | MODE_APPEND);
@@ -237,7 +252,7 @@ public class SecondActivity extends Activity {
 			DataOutputStream dos = new DataOutputStream(os);
 			dos.writeUTF(operacion);
 			dos.writeDouble(value);
-			dos.writeDouble(res);
+			dos.writeUTF(res);
 			dos.writeUTF(fec);
 			dos.flush();
 			dos.close();
@@ -281,9 +296,9 @@ public class SecondActivity extends Activity {
 			int n = dos.available();
 			//texto = "Leidos (" + n + " bytes)\r\n";
 			while (dos.available() > 0) {
-				texto = texto + " Operacion: " + dos.readUTF() + " valor:"
-						+ dos.readDouble() + " resultado:"+dos.readDouble()+
-						" fecha:"+dos.readUTF()+"\r\n";
+				texto = texto + " Operacion: " + dos.readUTF() + " Valor:"
+						+ dos.readDouble() + " Resultado:"+dos.readUTF()+
+						" Fecha:"+dos.readUTF()+"\r\n";
 			}
 			dos.close();	
 
