@@ -41,9 +41,7 @@ public class SecondActivity extends Activity {
 	private String aux=null;
 	protected int secuencia=0;
 	protected static final byte version=1,tipo=0;
-	private boolean salida=false;
-	private String mensaje = "",cmd="";
-	private byte v,type;
+	private boolean autenticado=false;
 	private String usuario="",password="";
 	private String modifiedSentence = "";
 	
@@ -104,7 +102,7 @@ public class SecondActivity extends Activity {
 
 					outToServer.write(version);
 					outToServer.writeInt(secuencia);
-					outToServer.write(MSG_LOGIN);
+					outToServer.write(MSG_OPERACION);
 					outToServer.writeUTF(ope);
 					outToServer.writeUTF(usuario + "_" + password+"_"+valor);
 					outToServer.flush();
@@ -170,9 +168,9 @@ public class SecondActivity extends Activity {
 			TextView panel = (TextView)findViewById(R.id.textView1);
 			
 			if(result.substring(3,6).equals(OK)){
-				int tam=result.length();
+	
 				if(panel.getText().equals("")){
-					if(tam>15){
+					if(result.length()>15){
 				panel.setText(result.substring(9, 15));
 				onSave(result.substring(6,9),result.substring(9, 15));
 					}
@@ -184,7 +182,7 @@ public class SecondActivity extends Activity {
 				else{
 					panel.setText("");
 					
-					if(tam>15){
+					if(result.length()>15){
 						panel.setText(result.substring(9, 15));
 						onSave(result.substring(6,9),result.substring(9, 15));
 							}
@@ -214,6 +212,119 @@ public class SecondActivity extends Activity {
 		}
 
 	}
+	
+	
+	public String compruebaUsuarioSocket(String ip, String puerto) {
+		
+		int estado=0;
+		int port = Integer.parseInt(puerto);
+		if (ip != null) {
+
+			try {
+				
+				
+				Socket s = new Socket(ip, port);
+
+				DataOutputStream outToServer = new DataOutputStream(s.getOutputStream());
+
+				DataInputStream dis = new DataInputStream(s.getInputStream());
+
+				
+				while (estado==0) {
+					
+					
+
+					outToServer.write(version);
+					outToServer.writeInt(secuencia);
+					outToServer.write(MSG_LOGIN);
+					outToServer.writeUTF(OK);
+					outToServer.writeUTF(usuario + "_" + password+"_"+"0");
+					outToServer.flush();
+					
+					modifiedSentence=dis.readUTF();																			
+					
+					estado++;
+				}
+				dis.close();
+				outToServer.close();
+				s.close();
+				return modifiedSentence;
+			} catch (IOException e) {
+				return e.getMessage();
+
+			} catch (IllegalArgumentException e) {
+				return e.getMessage();
+
+			}
+		}
+		return "Conexión fallida";
+
+	}
+	
+	
+	private class SocketComprueba extends AsyncTask<String,String, String> {
+		ProgressDialog pbar = null;
+
+		@Override
+		protected String doInBackground(String... urls) {
+
+			// params comes from the execute() call: params[0] is the ip.
+			//params[1] is the port
+			String aux=urls[0];
+			String [] params=aux.split(":");
+
+			return compruebaUsuarioSocket(params[0],params[1]);
+
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+			pbar = new ProgressDialog(SecondActivity.this);
+			pbar.setIndeterminate(true);
+			pbar.setMessage(getBaseContext().getString(R.string.conectando));
+
+			pbar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			pbar.setCancelable(false);
+			if (!pbar.isShowing()) {
+				pbar.show();
+			}
+			super.onPreExecute();
+		}
+
+		@Override
+		protected void onProgressUpdate(String... values) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
+		}
+
+		// onPostExecute displays the results of the AsyncTask.
+		protected void onPostExecute(String result) {
+			
+			if(result.substring(3,6).equals(OK)){
+				autenticado=true;			
+			}
+			else {
+				autenticado=false;
+				if(result.substring(7,14).equals("usuario"))
+					Toast.makeText(SecondActivity.this,
+							getResources().getString(R.string.nouser),
+							Toast.LENGTH_SHORT).show();
+					else{
+						Toast.makeText(SecondActivity.this,
+								getResources().getString(R.string.nopass),
+								Toast.LENGTH_SHORT).show();
+					}
+			}
+			
+			if (pbar != null)
+				pbar.dismiss();
+
+		}
+
+	}
+	
+	
 	
 	public String getFecha(){
 		String dia,mes,annio;
@@ -281,7 +392,9 @@ public class SecondActivity extends Activity {
 	}
 	
 	public void onLoad(View v) {
-
+		SocketComprueba task = new SocketComprueba();
+		task.execute(aux);
+		if(autenticado==true){
 		String texto = "";
 		TextView panel = (TextView)findViewById(R.id.textView1);
 		try {
@@ -317,6 +430,7 @@ public class SecondActivity extends Activity {
 					getResources().getString(R.string.toast_error),
 					Toast.LENGTH_SHORT).show();
 
+			}
 		}
 
 	}
