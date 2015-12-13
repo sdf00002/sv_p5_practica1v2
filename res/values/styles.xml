@@ -16,5 +16,34 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+	
+    
+    <style name="EditIniciales" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:background">#FF33B5E5</item>
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center</item> 
+        <item name="android:singleLine">true</item>       
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+    
+    <style name="EditIniciales.Uno">
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+    
+    <style name="FrameIniciales" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    
+     <style name="FrameIniciales.Uno">
+         <item name="android:layout_weight">1.2</item>
+    </style>
+    
 </resources>

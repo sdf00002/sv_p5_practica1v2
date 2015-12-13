@@ -19,10 +19,7 @@
         android:orientation="vertical" >
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1.2">
+             style="@style/FrameIniciales.Uno">"
 			
               <TextView
                   android:id="@+id/user"
@@ -35,26 +32,14 @@
 
             <EditText
                 android:id="@+id/usuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@color/blue"
-                android:ems="10"
-                android:gravity="center"
-                android:singleLine="true"
-                android:textColor="@color/White"
-                android:textCursorDrawable="@null" >
-
+                style="@style/EditIniciales.Uno">
                 <requestFocus />
             </EditText>
 
         </FrameLayout>
 
         <FrameLayout
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            style="@style/FrameIniciales" >
             
              <TextView
                  android:id="@+id/clave"
@@ -67,17 +52,8 @@
 
            	<EditText
            	    android:id="@+id/password"
-           	    android:layout_width="match_parent"
-           	    android:layout_height="wrap_content"
-           	    android:layout_gravity="center_vertical"
-           	    android:layout_marginTop="20dp"
-           	    android:background="@color/blue"
-           	    android:ems="10"
-           	    android:gravity="center"
-           	    android:inputType="textPassword"
-           	    android:singleLine="true"
-           	    android:textColor="@color/White"
-           	    android:textCursorDrawable="@null" >
+           	    style="@style/EditIniciales"        
+           	    android:inputType="textPassword" >
 
             </EditText>
             
@@ -86,10 +62,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content" >
+            style="@style/FrameIniciales" >
            	
              <TextView
                  android:id="@+id/ip"
@@ -102,26 +75,14 @@
 
            	<EditText
            	    android:id="@+id/dir_ip"
-           	    android:layout_width="match_parent"
-           	    android:layout_height="wrap_content"
-           	    android:layout_gravity="center_vertical"
-           	    android:layout_marginTop="20dp"
-           	    android:background="@color/blue"
-           	    android:ems="10"
-           	    android:gravity="center"
-           	    android:singleLine="true"
-           	    android:textColor="@color/White"
-           	    android:textCursorDrawable="@null" >
+           	    style="@style/EditIniciales" >
 
             </EditText>
             
         </FrameLayout>
 
-        <FrameLayout
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+       <FrameLayout
+            style="@style/FrameIniciales" >
            	
              <TextView
                  android:id="@+id/port"
@@ -134,24 +95,12 @@
 
            	<EditText
            	    android:id="@+id/puerto"
-           	    android:layout_width="match_parent"
-           	    android:layout_height="wrap_content"
-           	    android:layout_gravity="center_vertical"
-           	    android:layout_marginTop="20dp"
-           	    android:background="@color/blue"
-           	    android:ems="10"
-           	    android:gravity="center"
-           	    android:inputType="number"
-           	    android:singleLine="true"
-           	    android:textColor="@color/White"
-           	    android:textCursorDrawable="@null" >
-
-            </EditText>
-            
-            
+           	    style="@style/EditIniciales"
+           	    android:inputType="number"/>        
             
         </FrameLayout>
 
+       
         <ImageButton
             android:id="@+id/boton1"
             android:layout_width="71dp"

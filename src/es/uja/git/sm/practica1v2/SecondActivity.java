@@ -202,7 +202,7 @@ public class SecondActivity extends Activity {
 								getResources().getString(R.string.nopass),
 								Toast.LENGTH_SHORT).show();
 					}
-				
+				finish();
 			}
 				
 			
@@ -310,11 +310,11 @@ public class SecondActivity extends Activity {
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nouser),
 							Toast.LENGTH_SHORT).show();
-					else{
+					else
 						Toast.makeText(SecondActivity.this,
 								getResources().getString(R.string.nopass),
 								Toast.LENGTH_SHORT).show();
-					}
+					finish();
 			}
 			
 			if (pbar != null)

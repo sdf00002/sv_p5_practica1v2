@@ -71,7 +71,7 @@
                 android:background="@color/blue"
                 android:ems="10"
                 android:gravity="center_horizontal"
-                android:inputType="numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:singleLine="true"
                 android:textColor="@color/White"
                 android:textCursorDrawable="@null" >
