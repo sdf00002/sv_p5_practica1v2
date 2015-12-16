@@ -1,10 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_main"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    style="@style/Mixto"
     android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true"
     android:background="@color/Beige"
     android:orientation="vertical" >
 
@@ -19,12 +16,9 @@
         android:padding="5dp" >
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            style="@style/TextView.Uno"
             android:text="@string/inicio"
-            android:textColor="@color/White"
-            android:textSize="15dp" />
+            android:textColor="@color/White" />
     </FrameLayout>
 
     <TextView
@@ -39,16 +33,12 @@
         android:textColor="@android:color/black" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Mixto"
         android:layout_above="@+id/main_textView_foot"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/fragmentinicio_frame" >
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            style="@style/FramesLand.Uno"
             android:layout_weight="0.8" >
 
             <LinearLayout
@@ -57,60 +47,40 @@
                 android:orientation="vertical" >
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    style="@style/FramesLand">"
                     
                     <TextView
                     android:id="@+id/user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/user"
-                    android:textSize="15sp" />
+                    style="@style/TextView"
+                    android:text="@string/user" />
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    style="@style/FramesLand">"
                     
                      <TextView
                     android:id="@+id/clave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/pass"
-                    android:textSize="15sp" />
+                    style="@style/TextView"
+                    android:text="@string/pass" />
                     
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    style="@style/FramesLand">
                      
                     <TextView
                     android:id="@+id/ip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/ip"
-                    android:textSize="15sp" />
+                    style="@style/TextView"
+                    android:text="@string/ip" />
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    style="@style/FramesLand">
                     
                       <TextView
                     android:id="@+id/port"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/puerto"
-                    android:textSize="15sp" />
+                    style="@style/TextView"
+                    android:text="@string/puerto" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -118,8 +88,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            style="@style/FramesLand.Uno"
             android:layout_weight="1" >
 
             <LinearLayout
@@ -128,30 +97,19 @@
                 android:orientation="vertical" >
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    style="@style/FramesLand">
                     
                     <EditText
                         android:id="@+id/usuario"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/blue"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:singleLine="true"
-                        android:textColor="@color/White"
-                        android:textCursorDrawable="@null" >
+                        android:layout_marginTop="0dp"
+                        style="@style/EditIniciales">"
 
                     <requestFocus />
                 </EditText>
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                   style="@style/FramesLand">
                     
                     <EditText
                     android:id="@+id/password"
@@ -168,9 +126,7 @@
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    style="@style/FramesLand">
                     
                     <EditText
                     android:id="@+id/dir_ip"
@@ -186,9 +142,7 @@
                 </FrameLayout>
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" >
+                    style="@style/FramesLand">
                     
                     <EditText
                     android:id="@+id/puerto"

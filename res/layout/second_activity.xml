@@ -1,10 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_main"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    style="@style/Mixto"
     android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true"
     android:background="@color/Beige"
     android:orientation="vertical" >
     
@@ -19,62 +16,42 @@
      android:padding="5dp" >
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            style="@style/TextView.Uno"
             android:text="@string/operaciones"
-            android:textSize="15sp"
             android:textColor="@color/White" />
 
     </FrameLayout>
     
     <TextView
         android:id="@+id/main_textView_foot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Mixto"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:background="@drawable/uja"
         android:text="@string/help_uja"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black" />
     
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Mixto"
         android:layout_above="@+id/main_textView_foot"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/fragmentinicio_frame"
         android:orientation="vertical" >
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.2" >
+            style="@style/FrameIniciales"
+            android:layout_weight="0.2">"
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
+                style="@style/TextView"
                 android:text="@string/operacion"
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/valor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@color/blue"
-                android:ems="10"
+                style="@style/EditIniciales.Uno"
                 android:gravity="center_horizontal"
-                android:inputType="numberSigned|numberDecimal"
-                android:singleLine="true"
-                android:textColor="@color/White"
-                android:textCursorDrawable="@null" >
+                android:inputType="numberSigned|numberDecimal" >
 
                 <requestFocus />
             </EditText>
@@ -89,48 +66,39 @@
 
             <Button
                 android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                style="@style/Boton"
                 android:onClick="onSin"
-                android:layout_gravity="center_vertical"
                 android:text="@string/seno" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Boton"
                 android:onClick="onCos"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.5"
                 android:text="@string/coseno" />
 
         </LinearLayout>
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            style="@style/FrameIniciales"
             android:layout_weight="0.3" >
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="15sp"
                 android:text="" />
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2" >
+            android:layout_weight="0.2"
+            android:padding="10dp" >
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.5"
+                style="@style/Boton"
                 android:onClick="onLoad"
                 android:text="@string/historico" />
 

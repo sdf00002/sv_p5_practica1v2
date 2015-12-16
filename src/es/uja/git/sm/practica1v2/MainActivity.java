@@ -135,7 +135,7 @@ public class MainActivity extends Activity {
 	      .setTitle("Salir")
 	      .setMessage("¿Estás seguro?")
 	      .setNegativeButton(android.R.string.cancel, null)//sin listener
-	      .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {//un listener que al pulsar, cierre la aplicacion
+	      .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener(){//un listener que al pulsar, cierre la aplicacion
 	        @Override
 	        public void onClick(DialogInterface dialog, int which){
 	          //Salir

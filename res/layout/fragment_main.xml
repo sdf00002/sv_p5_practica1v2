@@ -1,34 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_main"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    style="@style/Mixto"
     android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true"
     android:background="@color/Beige"
     android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/layout_linear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Mixto"
         android:layout_above="@+id/main_textView_foot"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/fragmentinicio_frame"
         android:orientation="vertical" >
 
         <FrameLayout
-             style="@style/FrameIniciales.Uno">"
+             style="@style/FrameIniciales.Uno">
 			
               <TextView
                   android:id="@+id/user"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_gravity="center_vertical"
-                  android:gravity="center"
-                  android:text="@string/user"
-                  android:textSize="15sp" />
+                  style="@style/TextView"
+                  android:text="@string/user" />
 
             <EditText
                 android:id="@+id/usuario"
@@ -43,12 +33,8 @@
             
              <TextView
                  android:id="@+id/clave"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="center_vertical"
-                 android:gravity="center"
-                 android:text="@string/pass"
-                 android:textSize="15sp" />
+                 style="@style/TextView"
+                 android:text="@string/pass" />
 
            	<EditText
            	    android:id="@+id/password"
@@ -66,12 +52,8 @@
            	
              <TextView
                  android:id="@+id/ip"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="center_vertical"
-                 android:gravity="center"
-                 android:text="@string/ip"
-                 android:textSize="15sp" />
+                 style="@style/TextView"
+                 android:text="@string/ip" />
 
            	<EditText
            	    android:id="@+id/dir_ip"
@@ -86,12 +68,8 @@
            	
              <TextView
                  android:id="@+id/port"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="center_vertical"
-                 android:gravity="center"
-                 android:text="@string/puerto"
-                 android:textSize="15sp" />
+                 style="@style/TextView"
+                 android:text="@string/puerto" />
 
            	<EditText
            	    android:id="@+id/puerto"
@@ -115,21 +93,15 @@
 
     <FrameLayout
         android:id="@+id/fragmentinicio_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        style="@style/Mixto"
         android:layout_alignParentTop="true"
         android:background="@color/darkblue"
         android:padding="5dp" >
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            style="@style/TextView.Uno"
             android:text="@string/inicio"
-            android:textColor="@color/White"
-            android:textSize="15dp" />
+            android:textColor="@color/White" />
     </FrameLayout>
 
     <TextView
