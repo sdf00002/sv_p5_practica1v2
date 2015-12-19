@@ -8,9 +8,7 @@
     <FrameLayout
         android:id="@+id/fragmentinicio_frame"
         android:layout_width="319dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        style="@style/Mixto"
         android:layout_alignParentTop="true"
         android:background="@color/darkblue"
         android:padding="5dp" >
@@ -23,14 +21,7 @@
 
     <TextView
         android:id="@+id/main_textView_foot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/uja"
-        android:text="@string/help_uja"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black" />
+        style="@style/TextViewFoot" />
 
     <LinearLayout
         style="@style/Mixto"
@@ -42,12 +33,10 @@
             android:layout_weight="0.8" >
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" >
+                style="@style/LinearLayout">"
 
                 <FrameLayout
-                    style="@style/FramesLand">"
+                    style="@style/FramesLand">
                     
                     <TextView
                     android:id="@+id/user"
@@ -56,7 +45,7 @@
                 </FrameLayout>
 
                 <FrameLayout
-                    style="@style/FramesLand">"
+                    style="@style/FramesLand">
                     
                      <TextView
                     android:id="@+id/clave"
@@ -92,18 +81,16 @@
             android:layout_weight="1" >
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" >
+               style="@style/LinearLayout">
 
                 <FrameLayout
                     style="@style/FramesLand">
                     
                     <EditText
                         android:id="@+id/usuario"
+                        style="@style/EditIniciales"
                         android:layout_marginTop="0dp"
-                        style="@style/EditIniciales">"
-
+                        android:hint="@string/user3">
                     <requestFocus />
                 </EditText>
                 </FrameLayout>
@@ -113,16 +100,9 @@
                     
                     <EditText
                     android:id="@+id/password"
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:layout_gravity="center_vertical"
-	                android:background="@color/blue"
-	                android:ems="10"
-	                android:gravity="center"
-	                android:inputType="textPassword"
-	                android:singleLine="true"
-	                android:textColor="@color/White"
-	                android:textCursorDrawable="@null" />
+	                style="@style/EditIniciales"
+	                android:layout_marginTop="0dp"
+	                android:hint="@string/pass3"/>"
                 </FrameLayout>
 
                 <FrameLayout
@@ -130,15 +110,9 @@
                     
                     <EditText
                     android:id="@+id/dir_ip"
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:layout_gravity="center_vertical"
-	                android:background="@color/blue"
-	                android:gravity="center"
-	                android:ems="10"
-	                android:singleLine="true"
-	                android:textColor="@color/White"
-	                android:textCursorDrawable="@null" />
+	                style="@style/EditIniciales"
+	                android:layout_marginTop="0dp"
+	                android:hint="@string/ip3"/> 
                 </FrameLayout>
 
                 <FrameLayout
@@ -146,16 +120,10 @@
                     
                     <EditText
                     android:id="@+id/puerto"
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:layout_gravity="center_vertical"
-	                android:background="@color/blue"
-	                android:gravity="center"
-	                android:inputType="number"
-	                android:ems="10"
-	                android:singleLine="true"
-	                android:textColor="@color/White"
-	                android:textCursorDrawable="@null" />
+	                style="@style/EditIniciales"
+	                android:layout_marginTop="0dp"
+	                android:hint="@string/puerto3"
+	                android:inputType="number"/>
                 </FrameLayout>
 
             </LinearLayout>

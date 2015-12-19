@@ -25,7 +25,9 @@
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:background">#FF33B5E5</item>
         <item name="android:ems">10</item>
-        <item name="android:gravity">center</item> 
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColorHint">#FFFFFF</item> 
         <item name="android:singleLine">true</item>       
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textCursorDrawable">@null</item>
@@ -64,6 +66,13 @@
         <item name="android:layout_height">match_parent</item>
     </style>
     
+     <style name="LinearLayout" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        
+    </style>
+    
      <style name="Boton" parent="@android:style/Widget.Button">
          <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -82,5 +91,15 @@
     
      <style name="TextView.Uno">
          <item name="android:gravity">center_horizontal</item>
+    </style>
+    
+      <style name="TextViewFoot" parent="@android:style/TextAppearance.Small">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:text">@string/help_uja</item>
+        <item name="android:background">@drawable/uja</item>
+        <item name="android:textColor">#ff000000</item>
     </style>
 </resources>
