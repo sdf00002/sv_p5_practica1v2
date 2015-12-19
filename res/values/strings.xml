@@ -37,6 +37,7 @@
     <string name="Valor">Valor</string>
     <string name="historico">Histórico</string>
     <string name="salir">Salir</string>
+    <string name="finapp">¿Salir?</string>
     <string name="Almacenamiento">Almacenamiento</string>
     <string name="Interno">Interno</string>
     <string name="BaseDatos">Base de Datos</string>

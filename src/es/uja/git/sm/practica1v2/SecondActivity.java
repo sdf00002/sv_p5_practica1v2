@@ -1,16 +1,13 @@
 package es.uja.git.sm.practica1v2;
 
-import java.io.BufferedReader;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.Socket;
-import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -61,21 +58,7 @@ public class SecondActivity extends Activity {
 		setContentView(R.layout.second_activity);
 		
 		aux=ip+":"+puerto;
-		//SocketConnection task = new SocketConnection();
-		//task.execute(aux);
-		/**
-		//Asociamos las variables tipo TextView a los campos de la interfaz
-		TextView user = (TextView)findViewById(R.id.textView1);
-		TextView clave = (TextView)findViewById(R.id.textView2);
-		TextView dirip = (TextView)findViewById(R.id.textView3);
-		TextView port = (TextView)findViewById(R.id.textView4);
-		
-		//Escribimos en los TextView los datos recibidos
-		user.setText(usuario);
-		clave.setText(password);
-		dirip.setText(ip);
-		port.setText(puerto);
-		*/
+	
 	}
 	
 	public String conectaSocket(String ip, String puerto, String ope) {
@@ -115,13 +98,12 @@ public class SecondActivity extends Activity {
 				outToServer.close();
 				s.close();
 				return modifiedSentence;
-			} catch (IOException e) {
-				return e.getMessage();
+			} catch (UnknownHostException e) {
+				return "Host desconocido";
 
-			} catch (IllegalArgumentException e) {
-				return e.getMessage();
-
-			}
+			}  catch (IOException e) {
+					return "No se ha podido conectar con el servidor";
+				} 
 		}
 		return "Conexión fallida";
 
@@ -197,11 +179,16 @@ public class SecondActivity extends Activity {
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nouser),
 							Toast.LENGTH_SHORT).show();
-					else{
+					else if(result.substring(7,15).equals("password")){
 						Toast.makeText(SecondActivity.this,
 								getResources().getString(R.string.nopass),
 								Toast.LENGTH_SHORT).show();
 					}
+					else 
+						Toast.makeText(SecondActivity.this,
+								result,
+								Toast.LENGTH_SHORT).show();
+					
 				finish();
 			}
 				
@@ -249,13 +236,12 @@ public class SecondActivity extends Activity {
 				outToServer.close();
 				s.close();
 				return modifiedSentence;
-			} catch (IOException e) {
-				return e.getMessage();
+			} catch (UnknownHostException e) {
+				return "Host desconocido";
 
-			} catch (IllegalArgumentException e) {
-				return e.getMessage();
-
-			}
+			}  catch (IOException e) {
+					return "No se ha podido conectar con el servidor";
+				}
 		}
 		return "Conexión fallida";
 
@@ -310,11 +296,15 @@ public class SecondActivity extends Activity {
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nouser),
 							Toast.LENGTH_SHORT).show();
-					else
-						Toast.makeText(SecondActivity.this,
-								getResources().getString(R.string.nopass),
-								Toast.LENGTH_SHORT).show();
-					finish();
+				else if(result.substring(7,15).equals("password")){
+					Toast.makeText(SecondActivity.this,
+							getResources().getString(R.string.nopass),
+							Toast.LENGTH_SHORT).show();
+				}
+				else 
+					Toast.makeText(SecondActivity.this,
+							result,
+							Toast.LENGTH_SHORT).show();
 			}
 			
 			if (pbar != null)
@@ -368,13 +358,7 @@ public class SecondActivity extends Activity {
 			dos.flush();
 			dos.close();
 
-			/*Escritura con serialización*/
-//			Record data = new Record(tag,value);
-//			ObjectOutputStream oos = new ObjectOutputStream(os);
-//			oos.writeObject(data);
-//			oos.flush();
-//			oos.close();
-			/*Fin escritura con serialización*/
+			
 			os.close();
 			Toast.makeText(this,
 					getResources().getString(R.string.toast_saved),
@@ -406,8 +390,7 @@ public class SecondActivity extends Activity {
 			/* Lectura sin serialización */
 			DataInputStream dos = new DataInputStream(is);
 			
-			int n = dos.available();
-			//texto = "Leidos (" + n + " bytes)\r\n";
+			
 			while (dos.available() > 0) {
 				texto = texto + " Operacion: " + dos.readUTF() + " Valor:"
 						+ dos.readDouble() + " Resultado:"+dos.readUTF()+
@@ -432,7 +415,8 @@ public class SecondActivity extends Activity {
 
 			}
 		}
-
+		else 
+			finish();
 	}
 	
 	

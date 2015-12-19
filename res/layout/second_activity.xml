@@ -16,6 +16,7 @@
      android:padding="5dp" >
 
         <TextView
+            android:id="@+id/operaciones"
             style="@style/TextView.Uno"
             android:text="@string/operaciones"
             android:textColor="@color/White" />
@@ -34,10 +35,10 @@
 
         <FrameLayout
             style="@style/FrameIniciales"
-            android:layout_weight="0.2">"
+            android:layout_weight="0.2">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/intro_valor"
                 style="@style/TextView"
                 android:text="@string/operacion"
                 android:textSize="20sp" />
@@ -79,7 +80,8 @@
 
             <TextView
                 android:id="@+id/textView1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="" />
         </FrameLayout>
 

@@ -3,8 +3,14 @@ package es.uja.git.sm.practica1v2;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -20,11 +26,49 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-
+	private BroadcastReceiver r=null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);		
+		
+		final WifiManager wifiManager = (WifiManager)this.getSystemService(Context.WIFI_SERVICE);
+		android.net.wifi.SupplicantState s = wifiManager.getConnectionInfo().getSupplicantState();
+		//NetworkInfo.DetailedState state = WifiInfo.getDetailedStateOf(s);
+		
+		
+		if(wifiManager.isWifiEnabled()==false){
+			
+			
+				wifiManager.setWifiEnabled(true);
+				r=new BroadcastReceiver(){
+	
+						@Override
+						public void onReceive(Context arg0, Intent arg1) {
+							 WifiInfo wi = arg1.getParcelableExtra(WifiManager.EXTRA_WIFI_INFO);
+							 NetworkInfo ni= arg1.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+							   
+							
+				        	if(wi!=null && ni!=null){
+					        		if(ni.getDetailedState()==NetworkInfo.DetailedState.CONNECTED){
+					        		
+					        		
+					        	Toast toast2 =
+					    	            Toast.makeText(arg0,
+					    	                    "Conectado a "+wi.getSSID(), Toast.LENGTH_SHORT);
+					    		toast2.setGravity(Gravity.CENTER,0,0);
+					    	        toast2.show();
+				        		
+				        	}}
+							
+						}
+					
+				};
+				registerReceiver(r, new IntentFilter(
+						WifiManager.NETWORK_STATE_CHANGED_ACTION));
+		
+		}
 		
 		
 		if (savedInstanceState == null) {
@@ -130,22 +174,23 @@ public class MainActivity extends Activity {
 	   
 	  if (keyCode == KeyEvent.KEYCODE_BACK) {
 	   
-	    new AlertDialog.Builder(this)
-	      .setIcon(android.R.drawable.ic_dialog_alert)
-	      .setTitle("Salir")
-	      .setMessage("¿Estás seguro?")
-	      .setNegativeButton(android.R.string.cancel, null)//sin listener
-	      .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener(){//un listener que al pulsar, cierre la aplicacion
-	        @Override
-	        public void onClick(DialogInterface dialog, int which){
-	          //Salir
-	          MainActivity.this.finish();
-	        }
-	      })
-	      .show();
-
-	    // Si el listener devuelve true, significa que el evento esta procesado, y nadie debe hacer nada mas
-	    return true;
+		  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		    // Get the layout inflater
+		  LayoutInflater inflater = this.getLayoutInflater();
+		  
+		// Inflate and set the layout for the dialog
+		    // Pass null as the parent view because its going in the dialog layout
+		    builder.setView(inflater.inflate(R.layout.dialog_exit, null))
+		    // Add action buttons
+		    	  .setNegativeButton(android.R.string.cancel, null)
+		           .setPositiveButton(R.string.salir, new DialogInterface.OnClickListener() {
+		               @Override
+		               public void onClick(DialogInterface dialog, int id) {
+		            	   //Salir
+		     	          MainActivity.this.finish();
+		               }
+		           }).show();
+		                 		  
 	  }
 	//para las demas cosas, se reenvia el evento al listener habitual
 	  return super.onKeyDown(keyCode, event);

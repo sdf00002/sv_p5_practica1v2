@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        style="@style/FramesLand"
+        android:background="@color/blue" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            style="@style/Imagen"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/TextViewAlert"
+            android:textColor="@color/White"
+            android:text="@string/app_name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/FramesLand"
+        android:background="@color/Beige" >
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/Imagen"
+            android:src="@drawable/emo_im_crying" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/TextViewAlert"
+            android:text="@string/finapp" />
+
+    </LinearLayout>
+
+</LinearLayout>

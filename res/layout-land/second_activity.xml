@@ -14,6 +14,7 @@
         android:padding="5dp" >
 
         <TextView
+            android:id="@+id/operaciones"
             style="@style/TextView.Uno"
             android:text="@string/operaciones"
             android:textColor="@color/White" />
@@ -85,7 +86,8 @@
 
                     <TextView
                         android:id="@+id/textView1"
-		                android:layout_width="wrap_content"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
 		                android:text=""  />
 
                 </LinearLayout>

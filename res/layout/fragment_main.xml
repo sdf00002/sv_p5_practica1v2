@@ -99,6 +99,7 @@
         android:padding="5dp" >
 
         <TextView
+            android:id="@+id/bienvenido"
             style="@style/TextView.Uno"
             android:text="@string/inicio"
             android:textColor="@color/White" />
