@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
 		android.net.wifi.SupplicantState s = wifiManager.getConnectionInfo().getSupplicantState();
 		//NetworkInfo.DetailedState state = WifiInfo.getDetailedStateOf(s);
 		
-		
+		//Compruebo si el wifi no esta habilitado
 		if(wifiManager.isWifiEnabled()==false){
 			
 			
@@ -49,12 +49,13 @@ public class MainActivity extends Activity {
 	    	        toast1.show();
 				r=new BroadcastReceiver(){
 	
+						
 						@Override
 						public void onReceive(Context arg0, Intent arg1) {
 							 WifiInfo wi = arg1.getParcelableExtra(WifiManager.EXTRA_WIFI_INFO);
 							 NetworkInfo ni= arg1.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
 							   
-							
+							//caso en que tengamos datos del ssid y el estado del wifi sea CONNECTED
 				        	if(wi!=null && ni!=null){
 					        		if(ni.getDetailedState()==NetworkInfo.DetailedState.CONNECTED){
 					        		
@@ -70,6 +71,8 @@ public class MainActivity extends Activity {
 						}
 					
 				};
+				
+				//Registro del receiver que detecta cambios de estado en wifi
 				registerReceiver(r, new IntentFilter(
 						WifiManager.NETWORK_STATE_CHANGED_ACTION));
 		
@@ -174,6 +177,7 @@ public class MainActivity extends Activity {
 
 	}
 	
+	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	   
@@ -191,9 +195,9 @@ public class MainActivity extends Activity {
 		           .setPositiveButton(R.string.salir, new DialogInterface.OnClickListener() {
 		               @Override
 		               public void onClick(DialogInterface dialog, int id) {
-		            	   //Salir
+		            	   //Salir, finalizamos Mainactivity y el Receiver
 		     	          MainActivity.this.finish();
-		     	         unregisterReceiver(r);
+		     	        // unregisterReceiver(r);
 		               }
 		           }).show();
 		                 		  

@@ -61,6 +61,12 @@ public class SecondActivity extends Activity {
 	
 	}
 	
+	/**
+	 * @param ip direccion ip de servidor
+	 * @param puerto puerto donde escucha el servidor
+	 * @param ope operacion a realizar (seno o coseno)
+	 * @return
+	 */
 	public String conectaSocket(String ip, String puerto, String ope) {
 		
 		int estado=0;
@@ -108,7 +114,7 @@ public class SecondActivity extends Activity {
 		return "Conexión fallida";
 
 	}
-	//
+	
 	private class SocketConnection extends AsyncTask<String,String, String> {
 		ProgressDialog pbar = null;
 
@@ -148,7 +154,7 @@ public class SecondActivity extends Activity {
 		// onPostExecute displays the results of the AsyncTask.
 		protected void onPostExecute(String result) {
 			TextView panel = (TextView)findViewById(R.id.textView1);
-			
+			//Comprobamos que se recibe OK
 			if(result.substring(3,6).equals(OK)){
 	
 				if(panel.getText().equals("")){
@@ -157,7 +163,7 @@ public class SecondActivity extends Activity {
 				onSave(result.substring(6,9),result.substring(9, 15));
 					}
 					else{
-						panel.setText(result.substring(9, result.length()));
+						panel.setText(result.substring(9, 15));
 						onSave(result.substring(6,9),result.substring(9, result.length()));
 					}
 				}
@@ -165,7 +171,7 @@ public class SecondActivity extends Activity {
 					panel.setText("");
 					
 					if(result.length()>15){
-						panel.setText(result.substring(9, 15));
+						panel.setText(result.substring(9, result.length()));
 						onSave(result.substring(6,9),result.substring(9, 15));
 							}
 							else{
@@ -292,10 +298,12 @@ public class SecondActivity extends Activity {
 			}
 			else {
 				autenticado=false;
+				//Fallo al introducir usuario no existente
 				if(result.substring(7,14).equals("usuario"))
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nouser),
 							Toast.LENGTH_SHORT).show();
+				//Fallo por contraseña errónea
 				else if(result.substring(7,15).equals("password")){
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nopass),
@@ -317,6 +325,9 @@ public class SecondActivity extends Activity {
 	
 	
 	
+	/**
+	 * @return String con la fecha actual en formato año-mes-dia
+	 */
 	public String getFecha(){
 		String dia,mes,annio;
 		Calendar c = new GregorianCalendar();
@@ -330,6 +341,7 @@ public class SecondActivity extends Activity {
 		   return annio+"-"+mes+"-"+dia;
 		
 	}
+	
 	
 	public void onSave(String ope, String res) {
 		double value;
@@ -375,6 +387,7 @@ public class SecondActivity extends Activity {
 		
      
 	}
+	
 	
 	public void onLoad(View v) {
 		SocketComprueba task = new SocketComprueba();
