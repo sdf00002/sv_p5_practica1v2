@@ -33,7 +33,7 @@
             android:layout_weight="0.8" >
 
             <LinearLayout
-                style="@style/LinearLayout">"
+                style="@style/LinearLayout">
 
                 <FrameLayout
                     style="@style/FramesLand">
@@ -102,7 +102,8 @@
                     android:id="@+id/password"
 	                style="@style/EditIniciales"
 	                android:layout_marginTop="0dp"
-	                android:hint="@string/pass3"/>"
+	                android:inputType="textPassword"
+	                android:hint="@string/pass3"/>
                 </FrameLayout>
 
                 <FrameLayout

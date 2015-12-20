@@ -305,6 +305,7 @@ public class SecondActivity extends Activity {
 					Toast.makeText(SecondActivity.this,
 							result,
 							Toast.LENGTH_SHORT).show();
+				finish();
 			}
 			
 			if (pbar != null)
@@ -415,8 +416,6 @@ public class SecondActivity extends Activity {
 
 			}
 		}
-		else 
-			finish();
 	}
 	
 	
