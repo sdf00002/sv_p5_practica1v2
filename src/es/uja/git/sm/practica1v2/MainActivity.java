@@ -42,6 +42,11 @@ public class MainActivity extends Activity {
 			
 			
 				wifiManager.setWifiEnabled(true);
+				Toast toast1 =
+	    	            Toast.makeText(this,
+	    	                    "Wifi Habilitado", Toast.LENGTH_SHORT);
+	    		toast1.setGravity(Gravity.CENTER,0,0);
+	    	        toast1.show();
 				r=new BroadcastReceiver(){
 	
 						@Override
@@ -188,6 +193,7 @@ public class MainActivity extends Activity {
 		               public void onClick(DialogInterface dialog, int id) {
 		            	   //Salir
 		     	          MainActivity.this.finish();
+		     	         unregisterReceiver(r);
 		               }
 		           }).show();
 		                 		  
