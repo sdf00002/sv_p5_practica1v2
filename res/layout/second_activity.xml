@@ -45,7 +45,8 @@
 
             <EditText
                 android:id="@+id/valor"
-                style="@style/EditIniciales.Uno"
+                style="@style/EditIniciales"
+                android:layout_gravity="bottom"
                 android:gravity="center_horizontal"
                 android:inputType="numberSigned|numberDecimal" >
 
@@ -78,11 +79,25 @@
             style="@style/FrameIniciales"
             android:layout_weight="0.3" >
 
-            <TextView
-                android:id="@+id/textView1"
+           <ScrollView
+                android:id="@+id/scrollView1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="" />
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    style="@style/LinearLayout">"
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        style="@style/TextView.Uno"
+                        android:layout_height="match_parent"               
+                        android:text="" />
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
         </FrameLayout>
 
         <LinearLayout

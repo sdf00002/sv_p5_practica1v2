@@ -8,12 +8,13 @@
     <LinearLayout
         android:id="@+id/layout_linear"
         style="@style/Mixto"
+        android:padding="5dp"
         android:layout_above="@+id/main_textView_foot"
         android:layout_below="@+id/fragmentinicio_frame"
         android:orientation="vertical" >
 
         <FrameLayout
-             style="@style/FrameIniciales.Uno">
+             style="@style/FrameIniciales">
 			
               <TextView
                   android:id="@+id/user"
@@ -22,7 +23,7 @@
 
             <EditText
                 android:id="@+id/usuario"
-                style="@style/EditIniciales.Uno">
+                style="@style/EditIniciales">
                 <requestFocus />
             </EditText>
 
