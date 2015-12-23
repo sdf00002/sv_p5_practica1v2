@@ -41,6 +41,7 @@ public class SecondActivity extends Activity {
 	private boolean autenticado=false;
 	private String usuario="",password="";
 	private String modifiedSentence = "";
+	private TextView panel;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -57,15 +58,36 @@ public class SecondActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second_activity);
 		
+		panel = (TextView)findViewById(R.id.textView1);
 		aux=ip+":"+puerto;
 	
 	}
+	
+	
+    @Override
+    protected void onSaveInstanceState(Bundle guardaEstado) {
+          super.onSaveInstanceState(guardaEstado);
+          //guardamos en la variable t el texto del campo TextView
+          String t = panel.getText().toString();
+          //lo "guardamos" en el Bundle   
+          guardaEstado.putString("text", t);   
+    }
+ 
+    @Override
+    protected void onRestoreInstanceState(Bundle recuperaEstado) {
+          super.onRestoreInstanceState(recuperaEstado);
+          //recuperamos el String del Bundle
+          String t = recuperaEstado.getString("text");
+          //Seteamos el valor del EditText con el valor de nuestra cadena   
+          panel.setText(t);                    
+    }
+	
 	
 	/**
 	 * @param ip direccion ip de servidor
 	 * @param puerto puerto donde escucha el servidor
 	 * @param ope operacion a realizar (seno o coseno)
-	 * @return
+	 * @return un String con el resultado de la operacion
 	 */
 	public String conectaSocket(String ip, String puerto, String ope) {
 		
@@ -115,6 +137,7 @@ public class SecondActivity extends Activity {
 
 	}
 	
+
 	private class SocketConnection extends AsyncTask<String,String, String> {
 		ProgressDialog pbar = null;
 
@@ -122,7 +145,7 @@ public class SecondActivity extends Activity {
 		protected String doInBackground(String... urls) {
 
 			// params comes from the execute() call: params[0] is the ip.
-			//params[1] is the port
+			//params[1] is the port and params[2] is the operation string
 			String aux=urls[0];
 			String [] params=aux.split(":");
 
@@ -153,49 +176,49 @@ public class SecondActivity extends Activity {
 
 		// onPostExecute displays the results of the AsyncTask.
 		protected void onPostExecute(String result) {
-			TextView panel = (TextView)findViewById(R.id.textView1);
-			//Comprobamos que se recibe OK
+			//TextView panel = (TextView)findViewById(R.id.textView1);
+			//Comprobamos que se recibe +OK
 			if(result.substring(3,6).equals(OK)){
-	
 				if(panel.getText().equals("")){
-					if(result.length()>15){
+					if(result.length()>15){		//Si el resultado contiene muchas cifras, cogemos solo 6
 				panel.setText(result.substring(9, 15));
-				onSave(result.substring(6,9),result.substring(9, 15));
+				onSave(result.substring(6,9),result.substring(9, 15)); //Guardamos el resultado
 					}
 					else{
-						panel.setText(result.substring(9, 15));
-						onSave(result.substring(6,9),result.substring(9, result.length()));
+						panel.setText(result.substring(9, result.length()));
+						onSave(result.substring(6,9),result.substring(9, result.length())); //Guardamos el resultado
 					}
-				}
+				} // Si el textview no esta vacio, lo limpiamos primero
 				else{
 					panel.setText("");
 					
 					if(result.length()>15){
-						panel.setText(result.substring(9, result.length()));
-						onSave(result.substring(6,9),result.substring(9, 15));
+						panel.setText(result.substring(9, 15)); //Si el resultado contiene muchas cifras, cogemos solo 6
+						onSave(result.substring(6,9),result.substring(9, 15)); //Guardamos el resultado
 							}
 							else{
 								panel.setText(result.substring(9, result.length()));
-								onSave(result.substring(6,9),result.substring(9, result.length()));
+								onSave(result.substring(6,9),result.substring(9, result.length())); //Guardamos el resultado
 							}
 				}
-			}
+			} //Si no hemos recibido +OK
 			else {
-				if(result.substring(7,14).equals("usuario"))
+				if(result.substring(7,14).equals("usuario")){ //Comprobamos si es el usuario el que no existe
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nouser),
 							Toast.LENGTH_SHORT).show();
-					else if(result.substring(7,15).equals("password")){
+				finish(); //Finalizamos la activity
+				}
+					else if(result.substring(7,15).equals("password")){ //Comprobamos si la contraseña no es correcta para ese usuario
 						Toast.makeText(SecondActivity.this,
 								getResources().getString(R.string.nopass),
 								Toast.LENGTH_SHORT).show();
+						finish(); //Finalizamos la activity
 					}
 					else 
-						Toast.makeText(SecondActivity.this,
+						Toast.makeText(SecondActivity.this,	//En otro caso, mostramos el error recibido
 								result,
 								Toast.LENGTH_SHORT).show();
-					
-				finish();
 			}
 				
 			
@@ -207,6 +230,11 @@ public class SecondActivity extends Activity {
 	}
 	
 	
+	/**
+	 * @param ip direccion ip del servidor
+	 * @param puerto puerto donde escucha el servidor
+	 * @return Un String con el resultado de la operacion de comprobar si existe el usuario
+	 */
 	public String compruebaUsuarioSocket(String ip, String puerto) {
 		
 		int estado=0;
@@ -292,10 +320,10 @@ public class SecondActivity extends Activity {
 
 		// onPostExecute displays the results of the AsyncTask.
 		protected void onPostExecute(String result) {
-			
+			//Si recibimos +OK, ponemos la variable a verdadero
 			if(result.substring(3,6).equals(OK)){
 				autenticado=true;			
-			}
+			} //Si no, a falso
 			else {
 				autenticado=false;
 				//Fallo al introducir usuario no existente
@@ -309,11 +337,11 @@ public class SecondActivity extends Activity {
 							getResources().getString(R.string.nopass),
 							Toast.LENGTH_SHORT).show();
 				}
-				else 
+				else //En otro caso, mostramos el error recibido
 					Toast.makeText(SecondActivity.this,
 							result,
 							Toast.LENGTH_SHORT).show();
-				finish();
+				//finish(); //Finalizamos la activity
 			}
 			
 			if (pbar != null)
@@ -343,6 +371,10 @@ public class SecondActivity extends Activity {
 	}
 	
 	
+	/**
+	 * @param ope El tipo de operacion que ha realizado el usuario
+	 * @param res El resultado de esa operacion
+	 */
 	public void onSave(String ope, String res) {
 		double value;
 		
@@ -364,6 +396,7 @@ public class SecondActivity extends Activity {
 			FileOutputStream os = openFileOutput(filename, MODE_PRIVATE | MODE_APPEND);
 			/* Escritura sin serialización*/
 			DataOutputStream dos = new DataOutputStream(os);
+			//Escribimos los diferentes campos que nos interesan en el fichero
 			dos.writeUTF(operacion);
 			dos.writeDouble(value);
 			dos.writeUTF(res);
@@ -373,12 +406,14 @@ public class SecondActivity extends Activity {
 
 			
 			os.close();
+			
 			Toast.makeText(this,
 					getResources().getString(R.string.toast_saved),
 					Toast.LENGTH_SHORT).show();
-
+			
 
 		} catch (IOException ex) {
+			
 			Toast.makeText(this,
 					getResources().getString(R.string.toast_error),
 					Toast.LENGTH_SHORT).show();
@@ -388,13 +423,14 @@ public class SecondActivity extends Activity {
      
 	}
 	
-	
+
 	public void onLoad(View v) {
 		SocketComprueba task = new SocketComprueba();
 		task.execute(aux);
 		if(autenticado==true){
 		String texto = "";
-		TextView panel = (TextView)findViewById(R.id.textView1);
+		//TextView panel = (TextView)findViewById(R.id.textView1);
+		
 		try {
 			
 			String filename = usuario;
@@ -403,8 +439,8 @@ public class SecondActivity extends Activity {
 			
 			/* Lectura sin serialización */
 			DataInputStream dos = new DataInputStream(is);
-			
-			
+			panel.setText("");
+			//Mostramos las entradas guardadas para este usuario
 			while (dos.available() > 0) {
 				texto = texto + " Operacion: " + dos.readUTF() + " Valor:"
 						+ dos.readDouble() + " Resultado:"+dos.readUTF()+
@@ -417,16 +453,13 @@ public class SecondActivity extends Activity {
 			panel.setText(texto);
 
 			
-
+			
 			Toast.makeText(this,
 					getResources().getString(R.string.toast_loaded),
 					Toast.LENGTH_SHORT).show();
-
+			
 		} catch (IOException ex) {
-			Toast.makeText(this,
-					getResources().getString(R.string.toast_error),
-					Toast.LENGTH_SHORT).show();
-
+			
 			}
 		}
 	}
@@ -434,14 +467,14 @@ public class SecondActivity extends Activity {
 	
 	public void onSin(View v){
 		SocketConnection task = new SocketConnection();
-		String aux2=aux+":sin";
+		String aux2=aux+":sin"; //Añadimos a la ip y al puerto la operacion seno
 		task.execute(aux2);
 		
 	}
 	
 	public void onCos(View v){
 		SocketConnection task = new SocketConnection();
-		String aux2=aux+":cos";
+		String aux2=aux+":cos"; //Añadimos a la ip y al puerto la operacion coseno
 		task.execute(aux2);
 		
 	}

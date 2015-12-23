@@ -22,10 +22,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            
+            </intent-filter>         
         </activity>
-        <activity android:name="SecondActivity"></activity>
+        <activity android:name="SecondActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan"></activity>
         <activity android:name="Help"></activity>
         <activity android:name="Settings"></activity>
     </application>
