@@ -76,22 +76,16 @@
             style="@style/FramesLand"
             android:layout_weight="0.5" >
 
-            <ScrollView
-                android:id="@+id/scrollView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <LinearLayout
-                    style="@style/FramesLand" >
 
                     <TextView
                         android:id="@+id/textView1"
 		                style="@style/TextView.Uno"
 		                android:layout_height="match_parent"
+		                android:maxLines="3"
+						android:scrollbars="vertical" 
 		                android:text=""  />
 
-                </LinearLayout>
-            </ScrollView>
+
 
         </FrameLayout>
 

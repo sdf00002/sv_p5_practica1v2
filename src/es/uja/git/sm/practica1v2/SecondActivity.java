@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,7 +39,6 @@ public class SecondActivity extends Activity {
 	private String aux=null;
 	protected int secuencia=0;
 	protected static final byte version=1,tipo=0;
-	private boolean autenticado=false;
 	private String usuario="",password="";
 	private String modifiedSentence = "";
 	private TextView panel;
@@ -59,6 +59,7 @@ public class SecondActivity extends Activity {
 		setContentView(R.layout.second_activity);
 		
 		panel = (TextView)findViewById(R.id.textView1);
+		panel.setMovementMethod(new ScrollingMovementMethod()); //Para permitir el scroll en el textview
 		aux=ip+":"+puerto;
 	
 	}
@@ -320,28 +321,61 @@ public class SecondActivity extends Activity {
 
 		// onPostExecute displays the results of the AsyncTask.
 		protected void onPostExecute(String result) {
-			//Si recibimos +OK, ponemos la variable a verdadero
+			//Si recibimos +OK, mostramos los registros que haya
 			if(result.substring(3,6).equals(OK)){
-				autenticado=true;			
-			} //Si no, a falso
+				String texto = "";
+				//TextView panel = (TextView)findViewById(R.id.textView1);
+				
+				try {
+					
+					String filename = usuario;
+
+					FileInputStream is = openFileInput(filename);
+					
+					/* Lectura sin serialización */
+					DataInputStream dos = new DataInputStream(is);
+					panel.setText("");
+					//Mostramos las entradas guardadas para este usuario
+					while (dos.available() > 0) {
+						texto = texto + " Operacion: " + dos.readUTF() + " Valor:"
+								+ dos.readDouble() + " Resultado:"+dos.readUTF()+
+								" Fecha:"+dos.readUTF()+"\r\n";
+					}
+					dos.close();	
+
+							
+					is.close();
+					panel.setText(texto);
+
+					
+					
+					Toast.makeText(SecondActivity.this,
+							getResources().getString(R.string.toast_loaded),
+							Toast.LENGTH_SHORT).show();
+					
+				} catch (IOException ex) {
+					
+					}			
+			} //Si no, se muestra el error
 			else {
-				autenticado=false;
 				//Fallo al introducir usuario no existente
-				if(result.substring(7,14).equals("usuario"))
+				if(result.substring(7,14).equals("usuario")){
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nouser),
 							Toast.LENGTH_SHORT).show();
+					finish();//Finalizamos la activity
 				//Fallo por contraseña errónea
-				else if(result.substring(7,15).equals("password")){
+				}else if(result.substring(7,15).equals("password")){
 					Toast.makeText(SecondActivity.this,
 							getResources().getString(R.string.nopass),
 							Toast.LENGTH_SHORT).show();
+					finish();//Finalizamos la activity
 				}
 				else //En otro caso, mostramos el error recibido
 					Toast.makeText(SecondActivity.this,
 							result,
 							Toast.LENGTH_SHORT).show();
-				//finish(); //Finalizamos la activity
+				
 			}
 			
 			if (pbar != null)
@@ -427,41 +461,6 @@ public class SecondActivity extends Activity {
 	public void onLoad(View v) {
 		SocketComprueba task = new SocketComprueba();
 		task.execute(aux);
-		if(autenticado==true){
-		String texto = "";
-		//TextView panel = (TextView)findViewById(R.id.textView1);
-		
-		try {
-			
-			String filename = usuario;
-
-			FileInputStream is = openFileInput(filename);
-			
-			/* Lectura sin serialización */
-			DataInputStream dos = new DataInputStream(is);
-			panel.setText("");
-			//Mostramos las entradas guardadas para este usuario
-			while (dos.available() > 0) {
-				texto = texto + " Operacion: " + dos.readUTF() + " Valor:"
-						+ dos.readDouble() + " Resultado:"+dos.readUTF()+
-						" Fecha:"+dos.readUTF()+"\r\n";
-			}
-			dos.close();	
-
-					
-			is.close();
-			panel.setText(texto);
-
-			
-			
-			Toast.makeText(this,
-					getResources().getString(R.string.toast_loaded),
-					Toast.LENGTH_SHORT).show();
-			
-		} catch (IOException ex) {
-			
-			}
-		}
 	}
 	
 	
