@@ -82,9 +82,10 @@
             <TextView
                android:id="@+id/textView1"
                style="@style/TextView"
-               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
                android:maxLines="6"
-				android:scrollbars="vertical"              
+               android:textAlignment="center"
+			   android:scrollbars="vertical"              
                android:text="" />
        
              
