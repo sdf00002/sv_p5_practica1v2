@@ -84,9 +84,7 @@
                style="@style/TextView"
                android:layout_height="match_parent"
                android:maxLines="6"
-               android:textAlignment="center"
-			   android:scrollbars="vertical"              
-               android:text="" />
+			   android:scrollbars="vertical"/>
        
              
 	 </LinearLayout>

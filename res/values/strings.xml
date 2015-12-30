@@ -21,14 +21,14 @@
     <string name="action_settings">Configuración</string>
     <string name="conect">Conecta</string>
     <string name="help_uja">Universidad de Jaén</string> 
-    <string name="help_title">Ayuda de la aplicación de Práctica1v2</string>
+    <string name="help_title">Ayuda de la aplicación SMCálculo</string>
     <string name="help_text">Esta es una aplicación de la asignatura,
 		Servicios Móviles del Grado de Ingeniería Telemática de la Universidad de Jaén
 		realizada por Sergio Díaz Fuentes y Javier Montoro Salas.
 </string>
 <string name="help_contents">Contenido</string>
-<string name="help_content_p1">En esta aplicación se podrán realizar distintas operaciones
-    matemáticas.</string>
+<string name="help_content_p1">En esta aplicación se podrán realizar senos y cosenos
+    en grados sexagesimales.</string>
     <string name="operaciones">Operaciones</string>
     <string name="seno">Seno</string>
     <string name="coseno">Coseno</string>

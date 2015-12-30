@@ -82,8 +82,7 @@
 		                style="@style/TextView.Uno"
 		                android:layout_height="match_parent"
 		                android:maxLines="3"
-						android:scrollbars="vertical" 
-		                android:text=""  />
+						android:scrollbars="vertical"/>
 
 
 
